@@ -8,8 +8,8 @@
       "url": "https://fleet-operations-center.onrender.com",
       "title": {"ar": "منصة إدارة التشغيل والأسطول", "en": "Fleet & Operations Platform"},
       "desc": {
-        "ar": "نظام لإدارة شركات التوصيل: المناديب والمركبات والموارد البشرية والإقامات، مع صلاحيات حسب الدور، واستلام وتسليم المركبات بخريطة أضرار، ودردشة وتنبيهات داخلية.",
-        "en": "A management system for delivery companies: riders, vehicles, HR and residency tracking, role-based access, vehicle handover with a damage map, and internal chat and alerts."
+        "ar": "نظام لإدارة شركات التوصيل: المناديب والمركبات والموارد البشرية والإقامات، مع صلاحيات حسب الدور، واستلام وتسليم المركبات بخريطة أضرار تفاعلية وتكلفة يعتمدها المشرف.",
+        "en": "A management system for delivery companies: riders, vehicles, HR and residency tracking, role-based access, vehicle handover with an interactive damage map and supervisor-approved costs."
       },
       "tags": ["Fleet", "HR", "Roles", "Handover"]
     },
