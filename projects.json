@@ -6,48 +6,97 @@
       "type": "platform",
       "status": "live",
       "url": "https://fleet-operations-center.onrender.com",
-      "title": {"ar": "منصة إدارة التشغيل والأسطول", "en": "Fleet & Operations Platform"},
+      "title": {
+        "ar": "منصة إدارة التشغيل والأسطول",
+        "en": "Fleet & Operations Platform"
+      },
       "desc": {
         "ar": "نظام لإدارة شركات التوصيل: المناديب والمركبات والموارد البشرية والإقامات، مع صلاحيات حسب الدور، واستلام وتسليم المركبات بخريطة أضرار تفاعلية وتكلفة يعتمدها المشرف.",
         "en": "A management system for delivery companies: riders, vehicles, HR and residency tracking, role-based access, vehicle handover with an interactive damage map and supervisor-approved costs."
       },
-      "tags": ["Fleet", "HR", "Roles", "Handover"]
+      "tags": [
+        "Fleet",
+        "HR",
+        "Roles",
+        "Handover"
+      ]
     },
     {
       "id": "marketing-hub",
       "type": "platform",
       "status": "live",
       "url": "https://sahab-souq-social-hub.netlify.app",
-      "title": {"ar": "منصة التسويق ولوحة التحكم", "en": "Marketing Platform & Dashboard"},
-      "desc": {
-        "ar": "لوحة واحدة لإدارة حسابات التواصل الاجتماعي والحملات، مع حساب تكلفة المنتج والإعلانات والهامش للسوق السعودي وتتبع المنتجات الأكثر طلبا.",
-        "en": "One dashboard to manage social accounts and campaigns, with product, ad cost and margin calculation for the Saudi market, and tracking of trending products."
+      "title": {
+        "ar": "منصة التسويق ولوحة التحكم | Zaviro",
+        "en": "Zaviro Marketing Platform & Dashboard"
       },
-      "tags": ["Marketing", "Dashboard", "Costing", "Saudi market"]
+      "desc": {
+        "ar": "لوحة واحدة لإدارة حسابات Zaviro على السوشيال ميديا والحملات، مع حساب تكلفة المنتج والإعلانات والهامش للسوق السعودي وتتبع المنتجات الأكثر طلبا.",
+        "en": "One dashboard for the Zaviro social accounts and campaigns, with product, ad cost and margin calculation for the Saudi market, and tracking of trending products."
+      },
+      "tags": [
+        "Zaviro",
+        "Dashboard",
+        "Costing",
+        "Saudi market"
+      ]
     },
     {
       "id": "rider-app",
       "type": "app",
       "status": "live",
       "url": "https://fleet-operations-center.onrender.com",
-      "title": {"ar": "تطبيق المندوب", "en": "Rider App"},
+      "title": {
+        "ar": "تطبيق المندوب",
+        "en": "Rider App"
+      },
       "desc": {
         "ar": "بوابة للمندوب على الجوال: بياناته ومركبته واستلام وتسليم السيارة وإشعارات الأضرار المعتمدة.",
         "en": "A mobile portal for riders: their profile, vehicle, vehicle handover and approved damage notices."
       },
-      "tags": ["Mobile", "PWA", "Riders"]
+      "tags": [
+        "Mobile",
+        "PWA",
+        "Riders"
+      ]
     },
     {
       "id": "management-app",
       "type": "app",
       "status": "live",
       "url": "https://fleet-operations-center.onrender.com",
-      "title": {"ar": "تطبيق الإدارة العليا", "en": "Top-Management App"},
+      "title": {
+        "ar": "تطبيق الإدارة العليا",
+        "en": "Top-Management App"
+      },
       "desc": {
         "ar": "نسخة للجوال للإدارة العليا لمتابعة التشغيل والاعتمادات والتنبيهات، تُثبَّت على الشاشة الرئيسية للأندرويد والأيفون.",
         "en": "A mobile app for top management to follow operations, approvals and alerts, installable on the home screen on Android and iPhone."
       },
-      "tags": ["Mobile", "Approvals", "Alerts"]
+      "tags": [
+        "Mobile",
+        "Approvals",
+        "Alerts"
+      ]
+    },
+    {
+      "id": "zaviro-brand",
+      "type": "brand",
+      "status": "live",
+      "url": "https://x.com/getzaviro",
+      "title": {
+        "ar": "هوية Zaviro وحسابات السوشيال",
+        "en": "Zaviro Brand Identity & Social Accounts"
+      },
+      "desc": {
+        "ar": "اسم وشعار جديد (Z على مربع بنفسجي) مطبق على X وإنستجرام وفيسبوك: صور بروفايل وأغلفة وبوستات.",
+        "en": "A new brand name and logo (a white Z on a violet square) applied to X, Instagram and Facebook: profile images, covers and first posts."
+      },
+      "tags": [
+        "Brand",
+        "Logo",
+        "Social"
+      ]
     }
   ]
 }
