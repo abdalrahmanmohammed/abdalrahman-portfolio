@@ -1,0 +1,53 @@
+{
+  "updated": "2026-11-25",
+  "projects": [
+    {
+      "id": "fleet-ops",
+      "type": "platform",
+      "status": "live",
+      "url": "https://fleet-operations-center.onrender.com",
+      "title": {"ar": "منصة إدارة التشغيل والأسطول", "en": "Fleet & Operations Platform"},
+      "desc": {
+        "ar": "نظام لإدارة شركات التوصيل: المناديب والمركبات والموارد البشرية والإقامات، مع صلاحيات حسب الدور، واستلام وتسليم المركبات بخريطة أضرار، ودردشة وتنبيهات داخلية.",
+        "en": "A management system for delivery companies: riders, vehicles, HR and residency tracking, role-based access, vehicle handover with a damage map, and internal chat and alerts."
+      },
+      "tags": ["Fleet", "HR", "Roles", "Handover"]
+    },
+    {
+      "id": "marketing-hub",
+      "type": "platform",
+      "status": "live",
+      "url": "https://sahab-souq-social-hub.netlify.app",
+      "title": {"ar": "منصة التسويق ولوحة التحكم", "en": "Marketing Platform & Dashboard"},
+      "desc": {
+        "ar": "لوحة واحدة لإدارة حسابات التواصل الاجتماعي والحملات، مع حساب تكلفة المنتج والإعلانات والهامش للسوق السعودي وتتبع المنتجات الأكثر طلبا.",
+        "en": "One dashboard to manage social accounts and campaigns, with product, ad cost and margin calculation for the Saudi market, and tracking of trending products."
+      },
+      "tags": ["Marketing", "Dashboard", "Costing", "Saudi market"]
+    },
+    {
+      "id": "rider-app",
+      "type": "app",
+      "status": "live",
+      "url": "https://fleet-operations-center.onrender.com",
+      "title": {"ar": "تطبيق المندوب", "en": "Rider App"},
+      "desc": {
+        "ar": "بوابة للمندوب على الجوال: بياناته ومركبته واستلام وتسليم السيارة وإشعارات الأضرار المعتمدة.",
+        "en": "A mobile portal for riders: their profile, vehicle, vehicle handover and approved damage notices."
+      },
+      "tags": ["Mobile", "PWA", "Riders"]
+    },
+    {
+      "id": "management-app",
+      "type": "app",
+      "status": "live",
+      "url": "https://fleet-operations-center.onrender.com",
+      "title": {"ar": "تطبيق الإدارة العليا", "en": "Top-Management App"},
+      "desc": {
+        "ar": "نسخة للجوال للإدارة العليا لمتابعة التشغيل والاعتمادات والتنبيهات، تُثبَّت على الشاشة الرئيسية للأندرويد والأيفون.",
+        "en": "A mobile app for top management to follow operations, approvals and alerts, installable on the home screen on Android and iPhone."
+      },
+      "tags": ["Mobile", "Approvals", "Alerts"]
+    }
+  ]
+}
