@@ -11,8 +11,8 @@
         "en": "Fleet & Operations Platform"
       },
       "desc": {
-        "ar": "نظام لإدارة شركات التوصيل: المناديب والمركبات والموارد البشرية والإقامات، مع صلاحيات حسب الدور، واستلام وتسليم المركبات بخريطة أضرار تفاعلية وتكلفة يعتمدها المشرف، ولوحة إدارة بمؤشرات اليوم والشهر لكل قسم، ومساعد ذكي ودردشة بين الأقسام وتنبيهات بينها، وفحص تلقائي لسلامة البيانات.",
-        "en": "A management system for delivery companies: riders, vehicles, HR and residency tracking, role-based access, vehicle handover with an interactive damage map and supervisor-approved costs, a management dashboard with today and month indicators per department, an in-app assistant, department chat and alerts, and automatic data-health checks."
+        "ar": "نظام لإدارة شركات التوصيل: المناديب والمركبات والموارد البشرية والإقامات، مع صلاحيات حسب الدور، واستلام وتسليم المركبات بخريطة أضرار تفاعلية وتكلفة يعتمدها المشرف، ولوحة إدارة بمؤشرات اليوم والشهر لكل قسم، ومساعد ذكي ودردشة بين الأقسام وتنبيهات بينها، وفحص تلقائي لسلامة البيانات، وتسليم حساب نينجا الثابت لأكثر من مندوب بسجل زمني وفحص التداخل، ولوحة موارد بشرية بخريطة انتهاءات واكتمال الملفات.",
+        "en": "A management system for delivery companies: riders, vehicles, HR and residency tracking, role-based access, vehicle handover with an interactive damage map and supervisor-approved costs, a management dashboard with today and month indicators per department, an in-app assistant, department chat and alerts, and automatic data-health checks, fixed Ninja account handover across several riders with a timeline and overlap checks, and an HR dashboard with expiry map and file completeness."
       },
       "tags": [
         "Fleet",
