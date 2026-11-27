@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-27",
   "projects": [
     {
       "id": "fleet-ops",
@@ -96,6 +96,26 @@
         "Brand",
         "Logo",
         "Social"
+      ]
+    },
+    {
+      "id": "zaviro-store",
+      "type": "store",
+      "status": "live",
+      "url": "https://aneeqa2.myeasyorders.com",
+      "title": {
+        "ar": "متجر Zaviro | زافيرو",
+        "en": "Zaviro Store"
+      },
+      "desc": {
+        "ar": "متجر إلكتروني سعودي كامل على Easy Orders: تحويل متجر قديم بالكامل إلى هوية زافيرو (شعار وألوان ومحتوى عربي)، عملة ريال سعودي، دفع عند الاستلام وشحن مجاني، منتج تجريبي لتنظيم المطبخ بسعر 99 ريال مع صفحة منتج احترافية، وربط بكسل فيسبوك الجديد وروابط السوشيال.",
+        "en": "A full Saudi storefront on Easy Orders: an old store fully converted to the Zaviro brand (logo, colors, Arabic content), SAR currency, cash on delivery with free shipping, a kitchen-organization test product at 99 SAR with a polished product page, plus the new Facebook pixel and social links."
+      },
+      "tags": [
+        "Store",
+        "Easy Orders",
+        "Zaviro",
+        "COD"
       ]
     }
   ]
