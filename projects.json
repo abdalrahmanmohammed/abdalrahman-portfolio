@@ -138,6 +138,27 @@
         "Custom CSS/JS",
         "Interactive"
       ]
+    },
+    {
+      "id": "zaviro-store-saudi-polish",
+      "type": "store",
+      "status": "live",
+      "url": "https://aneeqa2.myeasyorders.com",
+      "title": {
+        "ar": "متجر زافيرو — تجهيز السوق السعودي وثيم v6",
+        "en": "Zaviro Store — Saudi Checkout & Theme v6"
+      },
+      "desc": {
+        "ar": "تجهيز متجر زافيرو (Easy Orders) للسوق السعودي: تفعيل إعدادات الشحن (السعودية، سعر موحد)، قائمة المناطق السعودية الـ13 في صفحة الدفع بدل المحافظات المصرية، تسميات وحقول سعودية (المنطقة، رقم هاتف 05، صيغة العنوان)، وثيم v6 مخصص: أيقونات الهيدر داكنة على الخلفية العاجية، توحيد أزرار الشراء بتدرج بنفسجي، هيدر صفحة الدفع عاجي بدل الأسود، وتمييز واضح لطريقة الدفع المختارة. بوابة الدفع النشطة: Taager Payment (مدى/فيزا/ماستر).",
+        "en": "Prepared the Zaviro store (Easy Orders) for Saudi Arabia: enabled shipping settings (KSA, flat rate), Saudi 13-region dropdown at checkout replacing Egyptian governorates, Saudi labels and placeholders (region, 05 phone, address format), and custom theme v6: dark header icons on the ivory header, unified violet-gradient buy buttons, ivory checkout header instead of black, and a clearly visible selected payment state. Active gateway: Taager Payment (mada/Visa/Mastercard)."
+      },
+      "tags": [
+        "Store",
+        "Easy Orders",
+        "Zaviro",
+        "Saudi",
+        "Custom CSS/JS"
+      ]
     }
   ]
 }
