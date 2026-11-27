@@ -159,6 +159,63 @@
         "Saudi",
         "Custom CSS/JS"
       ]
+    },
+    {
+      "id": "novaris-europe",
+      "type": "site",
+      "status": "live",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/europe/",
+      "title": {
+        "ar": "صفحة هبوط Novaris Books لأوروبا",
+        "en": "Novaris Books Europe landing page"
+      },
+      "desc": {
+        "ar": "صفحة هبوط إنجليزية موجهة للسوق الأوروبي: قوالب ميزانية لـ Excel وGoogle Sheets وملخصات كتب بأسلوب مبسط، مع تحميل رقمي فوري وقالب ميزانية شهري مجاني.",
+        "en": "English landing page for the European market: budget templates for Excel and Google Sheets plus plain-English book summaries, instant digital download and a free monthly budget sheet."
+      },
+      "tags": [
+        "Landing page",
+        "Digital products",
+        "Europe"
+      ]
+    },
+    {
+      "id": "work-samples",
+      "type": "site",
+      "status": "live",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/samples/",
+      "title": {
+        "ar": "نماذج أعمال Excel وGoogle Sheets",
+        "en": "Excel & Google Sheets work samples"
+      },
+      "desc": {
+        "ar": "ستة نماذج جاهزة للتحميل: متتبع فواتير، متتبع ميزانية، احتساب تكلفة الأجور، متتبع فواتير احترافي، تسوية مدفوعات الفواتير، وترتيب المنتجات حسب الإيراد.",
+        "en": "Six downloadable samples: invoice tracker, budget tracker, wage costing, pro invoice tracker, invoice-payment reconciliation, and product revenue ranking."
+      },
+      "tags": [
+        "Excel",
+        "Templates",
+        "Samples"
+      ]
+    },
+    {
+      "id": "sweets-demo",
+      "type": "site",
+      "status": "live",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/sweets-demo/",
+      "title": {
+        "ar": "متجر حلاوة بيتنا (نموذج تجريبي)",
+        "en": "Sweets shop demo (sample)"
+      },
+      "desc": {
+        "ar": "نموذج تجريبي لموقع متجر حلويات بالعربية: صفحات رئيسية وقائمة ومن نحن وتواصل. عرض فني توضيحي، وليس مشروع عميل.",
+        "en": "A demo Arabic sweets-shop site: home, menu, about and contact pages. A technical sample, not a client project."
+      },
+      "tags": [
+        "Demo",
+        "Arabic",
+        "Storefront"
+      ]
     }
   ]
 }
