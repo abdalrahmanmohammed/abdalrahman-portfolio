@@ -117,6 +117,27 @@
         "Zaviro",
         "COD"
       ]
+    },
+    {
+      "id": "zaviro-store-rebuild",
+      "type": "store",
+      "status": "live",
+      "url": "https://aneeqa2.myeasyorders.com",
+      "title": {
+        "ar": "إعادة بناء متجر Zaviro بجودة القوالب المدفوعة",
+        "en": "Zaviro Store Rebuild (Premium Quality)"
+      },
+      "desc": {
+        "ar": "إعادة بناء كاملة لمتجر زافيرو على الخطة المجانية بعد بحث في ثيمات Easy Orders ومتاجر أوروبية: ثيم Convert Kitchen بخط Cairo، صفحة رئيسية تفاعلية (ظهور عند التمرير، تكبير الصور عند التمرير عليها، شريط شراء ثابت، قسم ثقة: دفع عند الاستلام وشحن سريع وإرجاع 7 أيام)، كود CSS/JS مخصص مرفوع على ملفات المنصة وحقن في الهيدر، إزالة شارات الدفع المصرية واستبدالها بشارة الدفع عند الاستلام، وإخفاء قسم المنتجات المشابهة تلقائياً عندما يكون فارغاً.",
+        "en": "Full rebuild of the Zaviro store on the free plan after researching Easy Orders themes and top European stores: Convert Kitchen theme with Cairo font, interactive homepage (scroll reveal, hover zoom, sticky buy bar, trust-badges section: COD, fast shipping, 7-day returns), custom CSS/JS pack uploaded to platform assets and injected via header code, Egyptian payment badges removed and replaced with a cash-on-delivery chip, and the related-products section auto-hides when empty."
+      },
+      "tags": [
+        "Store",
+        "Easy Orders",
+        "Zaviro",
+        "Custom CSS/JS",
+        "Interactive"
+      ]
     }
   ]
 }
