@@ -508,7 +508,7 @@ if(document.getElementById('ch3'))new Chart(ch3,{type:'bar',data:{labels:['Meta'
 </script>
 <script>
 /* ===== v3 layer ===== */
-const FEED_URL=''; // set to the Worker URL once the real feed is live
+const FEED_URL='https://zaviro-feed.zaviro-feed.workers.dev/orders'; // set to the Worker URL once the real feed is live
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const fmt=n=>Math.round(n).toLocaleString('en-US');
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200);}
@@ -633,6 +633,7 @@ $('#cmdBtn').onclick=openCmd;
 
 // ---- real feed (activates when FEED_URL is set) ----
 async function loadFeed(){if(!FEED_URL)return;try{const r=await fetch(FEED_URL,{cache:'no-store'});const j=await r.json();
+ if(!(j.orders||[]).length){setBan(true,'متصل بمتجر زافيرو الحقيقي. بانتظار أول طلب بعد الربط، ونعرض بيانات تجريبية موسومة حتى يصل. الطلبات الجديدة تظهر هنا فور وصولها.');return;}
  const tb=$('#v2 table');[...tb.rows].slice(1).forEach(r=>r.remove());
  (j.orders||[]).forEach(o=>{const tr=tb.insertRow();tr.innerHTML='<td class="mono">#'+o.id+'</td><td>'+o.date+'</td><td>'+o.name+'</td><td>'+o.city+'</td><td>'+o.items+'</td><td>'+o.total+' ر.س</td><td>'+(o.pay||'—')+'</td><td>'+(o.src||'مباشر')+'</td><td><span class="tag '+tagClass(o.status)+'">'+o.status+'</span></td>';});
  readOrders();setBan(true,'بيانات حقيقية: آخر تحديث '+(j.updated||'الآن')+' · عدد الطلبات '+(j.orders||[]).length+'. الأقسام الأخرى ما زالت تجريبية حتى ربط الإعلانات.');}
