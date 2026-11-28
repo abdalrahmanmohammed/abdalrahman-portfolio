@@ -5,7 +5,7 @@
       "id": "fleet-ops",
       "type": "platform",
       "status": "live",
-      "url": "https://fleet-operations-center.onrender.com",
+      "url": "https://fleet-operations-center.onrender.com/system",
       "title": {
         "ar": "منصة إدارة التشغيل والأسطول",
         "en": "Fleet & Operations Platform"
@@ -45,7 +45,7 @@
       "id": "rider-app",
       "type": "app",
       "status": "live",
-      "url": "https://fleet-operations-center.onrender.com",
+      "url": "https://fleet-operations-center.onrender.com/?riderPortal=all",
       "title": {
         "ar": "تطبيق المندوب",
         "en": "Rider App"
@@ -64,7 +64,7 @@
       "id": "management-app",
       "type": "app",
       "status": "live",
-      "url": "https://fleet-operations-center.onrender.com",
+      "url": "https://fleet-operations-center.onrender.com/owner",
       "title": {
         "ar": "تطبيق الإدارة العليا",
         "en": "Top-Management App"
@@ -258,7 +258,7 @@
     {
       "id": "zaviro-merchant-dashboard",
       "type": "platform",
-      "status": "demo",
+      "status": "live",
       "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/dashboard/",
       "title": {
         "ar": "لوحة تاجر زافيرو v3",
@@ -273,6 +273,63 @@
         "Analytics",
         "Arabic",
         "Open source patterns"
+      ]
+    },
+    {
+      "id": "zaviro-showcase",
+      "type": "site",
+      "status": "live",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/showcase/",
+      "title": {
+        "ar": "موقع عرض لوحة زافيرو",
+        "en": "Zaviro Dashboard Showcase"
+      },
+      "desc": {
+        "ar": "صفحة تعريفية عربية كاملة للوحة التاجر: المميزات، ومعرض لقطات لشاشات اللوحة السبع، وخطوات الاستخدام، وسجل آخر التحديثات، مع رابط مباشر للوحة.",
+        "en": "A full Arabic product page for the merchant dashboard: features, a tabbed gallery of the seven dashboard screens, how it works, the latest changelog, and a direct link to the live dashboard."
+      },
+      "tags": [
+        "Showcase",
+        "Arabic RTL",
+        "Gallery"
+      ]
+    },
+    {
+      "id": "aziziyah-demo-store",
+      "type": "site",
+      "status": "live",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/aziziyah-demo/",
+      "title": {
+        "ar": "متجر تجريبي لمستودع جملة",
+        "en": "Wholesale Warehouse Demo Store"
+      },
+      "desc": {
+        "ar": "متجر إلكتروني تجريبي بالعربية لعرض فكرة متجر مستودع جملة: واجهة عميل فيها تصنيفات وسلة وطلب، ولوحة تاجر لإدارة المنتجات والطلبات والمخزون. كل البيانات توضيحية ومعلّمة كذلك.",
+        "en": "A demo Arabic online store pitching a wholesale-warehouse shop: a customer storefront with categories, cart and checkout, plus a merchant dashboard for products, orders and inventory. All data is clearly labelled demo."
+      },
+      "tags": [
+        "Demo Store",
+        "Dashboard",
+        "Arabic RTL"
+      ]
+    },
+    {
+      "id": "zaviro-promo-video",
+      "type": "video",
+      "status": "live",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/media/zaviro-dashboard-promo.mp4",
+      "title": {
+        "ar": "فيديو ترويجي للوحة زافيرو",
+        "en": "Zaviro Dashboard Promo Video"
+      },
+      "desc": {
+        "ar": "فيديو ترويجي (86 ثانية) باللهجة السعودية للوحة التاجر: تعليق صوتي، نصوص متحركة، وتظليل على أقسام اللوحة أثناء العرض.",
+        "en": "An 86-second Saudi-dialect promo for the merchant dashboard: voiceover, kinetic captions and timed highlights over the dashboard screens."
+      },
+      "tags": [
+        "Video",
+        "Voiceover",
+        "Saudi dialect"
       ]
     }
   ]
