@@ -3,188 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لوحة تاجر زافيرو — نموذج أولي</title>
+<title>لوحة تاجر زافيرو — منصة إدارة المتجر</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-  :root{
-    --brand:#6454F0; --brand-dark:#4a3ad1; --gold:#F2B33D;
-    --bg:#F5F6FB; --card:#FFFFFF; --ink:#1B1D2A; --muted:#7A7F96;
-    --ok:#17A66A; --warn:#D97706; --line:#E8EAF3;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-  .layout{display:flex;min-height:100vh}
-  /* Sidebar */
-  .side{width:240px;background:linear-gradient(180deg,#171A2E,#23264a);color:#fff;padding:22px 14px;flex-shrink:0;position:sticky;top:0;height:100vh}
-  .logo{display:flex;align-items:center;gap:10px;padding:6px 10px 22px}
-  .logo .z{width:38px;height:38px;border-radius:11px;background:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;position:relative}
-  .logo .z::after{content:"";position:absolute;bottom:7px;left:8px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
-  .logo b{font-size:17px;letter-spacing:.3px}
-  .logo small{display:block;color:#9aa0c3;font-weight:400;font-size:11px}
-  .nav a{display:flex;align-items:center;gap:10px;color:#B9BDDC;text-decoration:none;padding:11px 12px;border-radius:10px;font-size:14px;margin-bottom:4px;transition:.15s}
-  .nav a:hover{background:#2E3260;color:#fff}
-  .nav a.on{background:var(--brand);color:#fff}
-  .nav a .ic{width:20px;text-align:center}
-  .side .foot{position:absolute;bottom:18px;right:14px;left:14px;font-size:11px;color:#8B90B8;background:#23264a;border:1px solid #34386a;border-radius:10px;padding:10px}
-  /* Main */
-  main{flex:1;padding:26px 30px;max-width:1200px}
-  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap;gap:10px}
-  .topbar h1{font-size:22px}
-  .topbar .sub{color:var(--muted);font-size:13px;margin-top:4px}
-  .pill{background:#FFF3D6;color:#8a5a00;font-size:12px;padding:6px 12px;border-radius:99px;border:1px solid #F0D48A}
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-  .kpi .lbl{color:var(--muted);font-size:13px;margin-bottom:8px}
-  .kpi .val{font-size:24px;font-weight:800}
-  .kpi .chg{font-size:12px;margin-top:6px}
-  .up{color:var(--ok)} .down{color:#D64545}
-  .grid2{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:20px}
-  @media(max-width:900px){.grid2{grid-template-columns:1fr}.side{display:none}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
-  .card h3{font-size:15px;margin-bottom:14px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th{color:var(--muted);font-weight:600;text-align:right;padding:8px 10px;border-bottom:1px solid var(--line)}
-  td{padding:10px;border-bottom:1px solid var(--line)}
-  tr:last-child td{border-bottom:none}
-  .tag{font-size:11px;padding:3px 10px;border-radius:99px}
-  .t-ok{background:#E3F6EE;color:var(--ok)} .t-wait{background:#FDF0DC;color:var(--warn)} .t-off{background:#EDEEF6;color:var(--muted)}
-  .conn{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-  .conn .who{display:flex;align-items:center;gap:12px}
-  .conn .avatar{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:15px}
-  .conn b{font-size:14px} .conn small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-  .btn{background:var(--brand);color:#fff;border:none;padding:9px 18px;border-radius:9px;font-size:13px;cursor:pointer;font-family:inherit}
-  .btn.ghost{background:#EDEEFB;color:var(--brand-dark)}
-  .btn:disabled{background:#C9CBE0;cursor:not-allowed}
-  .steps{counter-reset:st}
-  .step{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
-  .step:last-child{border:none}
-  .step::before{counter-increment:st;content:counter(st);width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:14px}
-  .step b{display:block;margin-bottom:4px;font-size:14px}
-  .step p{color:var(--muted);font-size:13px;line-height:1.7}
-  .field{display:flex;gap:8px;margin-top:8px}
-  .field input{flex:1;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13px;font-family:inherit}
-  .view{display:none}.view.on{display:block}
-  .note{background:#EEF0FE;border:1px solid #D9DDFB;border-radius:10px;padding:10px 14px;font-size:12px;color:#4A4E77;margin-bottom:16px}
+:root{--brand:#6454F0;--brand2:#4a3ad1;--gold:#F2B33D;--bg:#F4F5FA;--card:#fff;--ink:#181B29;--muted:#767B93;--ok:#12A15F;--warn:#C77400;--bad:#D23F3F;--line:#E7E9F2;--soft:#F7F8FD}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+.layout{display:flex;min-height:100vh}
+.side{width:248px;background:linear-gradient(180deg,#15182B,#20234a);color:#fff;padding:20px 14px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow:auto}
+.logo{display:flex;align-items:center;gap:10px;padding:4px 10px 20px}
+.logo .z{width:38px;height:38px;border-radius:11px;background:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;position:relative}
+.logo .z::after{content:"";position:absolute;bottom:7px;left:8px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.logo b{font-size:16px}.logo small{display:block;color:#99A; font-size:11px;color:#9aa0c3}
+.nav a{display:flex;align-items:center;gap:10px;color:#B9BDDC;text-decoration:none;padding:10px 12px;border-radius:10px;font-size:13.5px;margin-bottom:3px}
+.nav a:hover{background:#2E3260;color:#fff}.nav a.on{background:var(--brand);color:#fff}
+.nav .ic{width:20px;text-align:center}
+.badge{margin-right:auto;background:var(--bad);color:#fff;font-size:10px;min-width:18px;height:18px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+.side .foot{margin-top:18px;font-size:11px;color:#8B90B8;background:#23264a;border:1px solid #34386a;border-radius:10px;padding:10px;line-height:1.7}
+main{flex:1;padding:24px 28px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.topbar h1{font-size:21px}.sub{color:var(--muted);font-size:12.5px;margin-top:3px}
+.ranges{display:flex;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ranges button{border:none;background:none;padding:8px 14px;font-size:12.5px;cursor:pointer;font-family:inherit;color:var(--muted)}
+.ranges button.on{background:var(--brand);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kpi .lbl{color:var(--muted);font-size:12px;margin-bottom:6px;display:flex;justify-content:space-between}
+.kpi .val{font-size:21px;font-weight:800}
+.kpi .chg{font-size:11.5px;margin-top:5px}.up{color:var(--ok)}.down{color:var(--bad)}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:1000px){.grid2,.grid3{grid-template-columns:1fr}.side{display:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.card h3{font-size:14.5px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.card h3 .more{font-size:11.5px;color:var(--brand);cursor:pointer;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{color:var(--muted);font-weight:600;text-align:right;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--soft)}
+.tag{font-size:11px;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.t-ok{background:#E2F5EC;color:var(--ok)}.t-wait{background:#FBF0DA;color:var(--warn)}.t-off{background:#EDEEF6;color:var(--muted)}.t-bad{background:#FBE3E3;color:var(--bad)}.t-info{background:#E6EAFE;color:var(--brand2)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-size:12px;cursor:pointer;color:var(--muted)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.searchbar{display:flex;gap:8px;margin-bottom:14px}
+.searchbar input{flex:1;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:13px;font-family:inherit}
+.alert{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-right:4px solid var(--warn);background:#fff;border-radius:10px;padding:11px 14px;margin-bottom:9px;font-size:12.5px}
+.alert.crit{border-right-color:var(--bad)}.alert.good{border-right-color:var(--ok)}
+.alert .t{color:var(--muted);font-size:11px;margin-top:3px}
+.conn{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;background:#fff}
+.conn .who{display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:15px;flex-shrink:0}
+.conn b{font-size:13.5px}.conn small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.btn{background:var(--brand);color:#fff;border:none;padding:9px 18px;border-radius:9px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn.ghost{background:#EDEEFB;color:var(--brand2)}
+.steps{counter-reset:st}
+.step{display:flex;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border:none}
+.step::before{counter-increment:st;content:counter(st);width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px}
+.step b{display:block;margin-bottom:3px;font-size:13.5px}
+.step p{color:var(--muted);font-size:12.5px;line-height:1.8}
+.field{display:flex;gap:8px;margin-top:8px}
+.field input{flex:1;border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:12.5px;font-family:inherit}
+.view{display:none}.view.on{display:block}
+.note{background:#EEF0FE;border:1px solid #D9DDFB;border-radius:10px;padding:10px 14px;font-size:12px;color:#4A4E77;margin-bottom:14px;line-height:1.8}
+.progress{height:6px;background:#EDEEF6;border-radius:3px;overflow:hidden;margin-top:6px}
+.progress i{display:block;height:100%;background:var(--brand);border-radius:3px}
+.pf{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.pf:last-child{border:none}
+.pf img{width:44px;height:44px;border-radius:9px;object-fit:cover;background:#EDEEF6}
+.pf .n{flex:1;font-size:12.5px}
+.pf .n small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.mono{font-family:Consolas,monospace;font-size:12px;direction:ltr;display:inline-block}
+.modal-back{position:fixed;inset:0;background:rgba(20,22,40,.45);display:none;align-items:center;justify-content:center;z-index:50}
+.modal-back.on{display:flex}
+.modal{background:#fff;border-radius:16px;width:440px;max-width:92vw;padding:22px;max-height:86vh;overflow:auto}
+.modal h3{margin-bottom:12px}
+.modal .x{float:left;border:none;background:none;font-size:18px;cursor:pointer;color:var(--muted)}
+.roas-good{color:var(--ok);font-weight:700}.roas-mid{color:var(--warn);font-weight:700}.roas-bad{color:var(--bad);font-weight:700}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-left:4px}
 </style>
 </head>
 <body>
 <div class="layout">
-  <aside class="side">
-    <div class="logo"><div class="z">Z</div><div><b>ZAVIRO</b><small>لوحة التاجر</small></div></div>
-    <nav class="nav">
-      <a href="#" class="on" data-v="v1"><span class="ic">📊</span>نظرة عامة</a>
-      <a href="#" data-v="v2"><span class="ic">🧾</span>الطلبات</a>
-      <a href="#" data-v="v3"><span class="ic">📦</span>المخزون</a>
-      <a href="#" data-v="v4"><span class="ic">🔗</span>ربط المنصات</a>
-      <a href="#" data-v="v5"><span class="ic">🎯</span>معالج البكسل</a>
-    </nav>
-    <div class="foot">نموذج أولي (Demo) — البيانات المعروضة تجريبية لتوضيح الفكرة.</div>
-  </aside>
+<aside class="side">
+  <div class="logo"><div class="z">Z</div><div><b>ZAVIRO</b><small>لوحة التاجر الذكية</small></div></div>
+  <nav class="nav">
+    <a href="#" class="on" data-v="v1"><span class="ic">📊</span>نظرة عامة</a>
+    <a href="#" data-v="v2"><span class="ic">🧾</span>الطلبات<span class="badge">5</span></a>
+    <a href="#" data-v="v3"><span class="ic">📦</span>المخزون<span class="badge" style="background:var(--warn)">2</span></a>
+    <a href="#" data-v="v4"><span class="ic">📣</span>الأداء الإعلاني</a>
+    <a href="#" data-v="v5"><span class="ic">🔗</span>ربط المنصات</a>
+    <a href="#" data-v="v6"><span class="ic">🎯</span>معالج البكسل</a>
+    <a href="#" data-v="v7"><span class="ic">🔔</span>التنبيهات<span class="badge">3</span></a>
+  </nav>
+  <div class="foot">نسخة عرض تقديمي — كل الأرقام بيانات تجريبية مُعلَّمة، وتُستبدل ببيانات متجرك الحقيقية فور ربطه.</div>
+</aside>
 
-  <main>
-    <div class="topbar">
-      <div><h1 id="ttl">نظرة عامة</h1><div class="sub">متجر: زافيرو — منتجات مختارة لبيت مرتب</div></div>
-      <span class="pill">⚡ مباشر — بيانات تجريبية</span>
-    </div>
-
-    <!-- نظرة عامة -->
-    <section class="view on" id="v1">
-      <div class="kpis">
-        <div class="kpi"><div class="lbl">مبيعات اليوم</div><div class="val">1,912 ر.س</div><div class="chg up">▲ 18% عن أمس</div></div>
-        <div class="kpi"><div class="lbl">الطلبات (آخر 7 أيام)</div><div class="val">43</div><div class="chg up">▲ 12% عن الأسبوع السابق</div></div>
-        <div class="kpi"><div class="lbl">متوسط قيمة الطلب</div><div class="val">164 ر.س</div><div class="chg up">▲ 5%</div></div>
-        <div class="kpi"><div class="lbl">معدل التحويل</div><div class="val">3.1%</div><div class="chg down">▼ 0.4 نقطة</div></div>
-      </div>
-      <div class="grid2">
-        <div class="card"><h3>المبيعات — آخر 14 يوم</h3><canvas id="ch1" height="110"></canvas></div>
-        <div class="card"><h3>مصادر الزيارات</h3><canvas id="ch2" height="180"></canvas></div>
-      </div>
-      <div class="card">
-        <h3>مؤشرات مخصصة (تُبنى حسب حاجة التاجر)</h3>
-        <table>
-          <tr><th>المؤشر</th><th>القيمة</th><th>الهدف</th><th>الحالة</th></tr>
-          <tr><td>نسبة الطلبات المكتملة الدفع أونلاين</td><td>92%</td><td>95%</td><td><span class="tag t-wait">قريب من الهدف</span></td></tr>
-          <tr><td>تكلفة اكتساب العميل (تقديرية)</td><td>21 ر.س</td><td>أقل من 25 ر.س</td><td><span class="tag t-ok">ممتاز</span></td></tr>
-          <tr><td>منتجات قاربت على النفاد</td><td>2</td><td>0</td><td><span class="tag t-wait">تنبيه</span></td></tr>
-        </table>
-      </div>
-    </section>
-
-    <!-- الطلبات -->
-    <section class="view" id="v2">
-      <div class="card">
-        <h3>أحدث الطلبات</h3>
-        <table>
-          <tr><th>الطلب</th><th>المنتج</th><th>العميل</th><th>المبلغ</th><th>الدفع</th><th>الحالة</th></tr>
-          <tr><td>#1043</td><td>باقة العناية بالسيارة 3 في 1</td><td>نورة — الرياض</td><td>467 ر.س</td><td>مدى — مكتمل</td><td><span class="tag t-ok">قيد التجهيز</span></td></tr>
-          <tr><td>#1042</td><td>ممسحة البخاخ 2 في 1</td><td>فهد — جدة</td><td>113 ر.س</td><td>Apple Pay — مكتمل</td><td><span class="tag t-ok">تم الشحن</span></td></tr>
-          <tr><td>#1041</td><td>منظم أدراج قابل للتعديل</td><td>ريم — الدمام</td><td>89 ر.س</td><td>بطاقة — مكتمل</td><td><span class="tag t-wait">بانتظار الشحن</span></td></tr>
-          <tr><td>#1040</td><td>باقة العناية بالسيارة 3 في 1</td><td>سلطان — الرياض</td><td>467 ر.س</td><td>مدى — مكتمل</td><td><span class="tag t-ok">تم التوصيل</span></td></tr>
-          <tr><td>#1039</td><td>ممسحة البخاخ 2 في 1</td><td>هند — مكة</td><td>113 ر.س</td><td>STC Pay — مكتمل</td><td><span class="tag t-ok">تم التوصيل</span></td></tr>
-        </table>
-      </div>
-    </section>
-
-    <!-- المخزون -->
-    <section class="view" id="v3">
-      <div class="card">
-        <h3>المخزون والمزامنة مع المورّد</h3>
-        <table>
-          <tr><th>المنتج</th><th>SKU</th><th>سعر البيع</th><th>التكلفة</th><th>الهامش</th><th>المتوفر</th><th>الحالة</th></tr>
-          <tr><td>باقة العناية بالسيارة 3 في 1 (BOSS)</td><td>SA050101ZPP0199</td><td>439 ر.س</td><td>369 ر.س</td><td>70 ر.س</td><td>34</td><td><span class="tag t-ok">متوفر</span></td></tr>
-          <tr><td>ممسحة البخاخ 2 في 1</td><td>—</td><td>85 ر.س</td><td>—</td><td>—</td><td>8</td><td><span class="tag t-wait">مخزون منخفض</span></td></tr>
-          <tr><td>منظم أدراج قابل للتعديل</td><td>—</td><td>89 ر.س</td><td>—</td><td>—</td><td>21</td><td><span class="tag t-ok">متوفر</span></td></tr>
-        </table>
-        <div class="note" style="margin-top:14px">في النسخة الفعلية: المخزون يُزامَن تلقائيًا من مزوّد الدروبشيبينغ (تاجر) ومن Easy Orders، مع تنبيه عند انخفاض الكمية.</div>
-      </div>
-    </section>
-
-    <!-- الربط -->
-    <section class="view" id="v4">
-      <div class="note">اربط حساباتك الإعلانية مرة واحدة، وتجمع اللوحة المبيعات والإعلانات والمخزون في مكان واحد. الربط عبر الواجهات الرسمية لكل منصة (API).</div>
-      <div class="conn"><div class="who"><div class="avatar" style="background:#1877F2">f</div><div><b>Meta — فيسبوك وإنستغرام</b><small>حساب إعلاني + بكسل + كتالوج المنتجات</small></div></div><button class="btn">اربط الآن</button></div>
-      <div class="conn"><div class="who"><div class="avatar" style="background:#111">♪</div><div><b>TikTok for Business</b><small>مركز الإعلانات + Events API</small></div></div><button class="btn">اربط الآن</button></div>
-      <div class="conn"><div class="who"><div class="avatar" style="background:#4285F4">G</div><div><b>Google Ads + GA4</b><small>قياس التحويل وربط التحليلات</small></div></div><button class="btn">اربط الآن</button></div>
-      <div class="conn"><div class="who"><div class="avatar" style="background:#FFFC00;color:#111">👻</div><div><b>Snapchat Ads</b><small>بكسل سناب + التقارير</small></div></div><button class="btn">اربط الآن</button></div>
-      <div class="conn"><div class="who"><div class="avatar" style="background:var(--brand)">EO</div><div><b>Easy Orders</b><small>المتجر: الطلبات والمنتجات والمخزون</small></div></div><span class="tag t-ok">متصل ✓</span></div>
-    </section>
-
-    <!-- البكسل -->
-    <section class="view" id="v5">
-      <div class="card">
-        <h3>معالج ربط بكسل Meta — خطوة بخطوة</h3>
-        <div class="steps">
-          <div class="step"><div><b>افتح مدير الأحداث (Events Manager) في حسابك الإعلاني</b><p>من Meta Business Suite ← كل الأدوات ← مدير الأحداث ← اختر البكسل أو أنشئ واحدًا جديدًا باسم متجرك.</p></div></div>
-          <div class="step"><div><b>انسخ معرّف البكسل (Pixel ID)</b><p>رقم من 15–16 خانة يظهر تحت اسم البكسل في الإعدادات.</p></div></div>
-          <div class="step"><div><b>الصق المعرّف هنا</b><p>نركّبه في متجرك تلقائيًا ونفعّل أحداث الشراء والإضافة للسلة وبدء الدفع.</p>
-            <div class="field"><input placeholder="مثال: 1234567890123456"><button class="btn">تحقق واربط</button></div></div></div>
-          <div class="step"><div><b>تحقق من وصول الأحداث</b><p>نرسل حدثًا تجريبيًا ونعرض لك تأكيد الاستلام من Meta خلال دقيقة — بدون الحاجة لأي كود منك.</p></div></div>
-        </div>
-        <div class="note" style="margin-top:14px">نفس المعالج يتوفر لـ TikTok وSnap وGoogle — كل منصة بخطواتها المصورة.</div>
-      </div>
-    </section>
-  </main>
+<main>
+<div class="topbar">
+  <div><h1 id="ttl">نظرة عامة</h1><div class="sub">متجر: زافيرو — aneeqa2.myeasyorders.com</div></div>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <div class="ranges" id="ranges"><button class="on">اليوم</button><button>7 أيام</button><button>30 يومًا</button><button>مخصص</button></div>
+    <span class="tag t-wait">بيانات تجريبية</span>
+  </div>
 </div>
+
+<!-- نظرة عامة -->
+<section class="view on" id="v1">
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">المبيعات</div><div class="val">1,912 ر.س</div><div class="chg up">▲ 18% عن الفترة السابقة</div></div>
+    <div class="kpi"><div class="lbl">الطلبات</div><div class="val">43</div><div class="chg up">▲ 12%</div></div>
+    <div class="kpi"><div class="lbl">متوسط قيمة الطلب</div><div class="val">164 ر.س</div><div class="chg up">▲ 5%</div></div>
+    <div class="kpi"><div class="lbl">الإنفاق الإعلاني</div><div class="val">610 ر.س</div><div class="chg down">▲ 9% (راقب ROAS)</div></div>
+    <div class="kpi"><div class="lbl">ROAS الإجمالي</div><div class="val">3.1x</div><div class="chg up">هدفك 3x ✓</div></div>
+    <div class="kpi"><div class="lbl">صافي الربح بعد التكاليف</div><div class="val">428 ر.س</div><div class="chg up">هامش 22%</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>المبيعات مقابل الإنفاق الإعلاني — آخر 14 يوم</h3>
+      <div class="legend"><span><i style="background:#6454F0"></i>المبيعات</span><span><i style="background:#F2B33D"></i>الإنفاق الإعلاني</span></div>
+      <canvas id="ch1" height="105"></canvas>
+    </div>
+    <div class="card">
+      <h3>أحدث التنبيهات <span class="more" data-goto="v7">الكل ←</span></h3>
+      <div class="alert crit"><div>⚠️<div><b>مخزون منخفض:</b> ممسحة البخاخ 2 في 1 — تبقّى 8 قطع، متوسط البيع 6/يوم.<div class="t">قبل 20 دقيقة</div></div></div></div>
+      <div class="alert"><div>📉<div><b>هبوط ROAS على تيك توك:</b> من 3.4x إلى 2.6x خلال 3 أيام.<div class="t">قبل ساعتين</div></div></div></div>
+      <div class="alert good"><div>✅<div><b>تم ربط بكسل تيك توك</b> والأحداث تصل بنجاح.<div class="t">أمس</div></div></div></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>الأداء حسب المنصة <span class="more" data-goto="v4">التفاصيل ←</span></h3>
+      <table>
+        <tr><th>المنصة</th><th>الإنفاق</th><th>المبيعات</th><th>ROAS</th><th>صافي الربح</th></tr>
+        <tr><td>Meta (فيسبوك/إنستغرام)</td><td>320 ر.س</td><td>1,120 ر.س</td><td class="roas-good">3.5x</td><td>+186 ر.س</td></tr>
+        <tr><td>تيك توك</td><td>190 ر.س</td><td>494 ر.س</td><td class="roas-mid">2.6x</td><td>+52 ر.س</td></tr>
+        <tr><td>جوجل</td><td>100 ر.س</td><td>298 ر.س</td><td class="roas-mid">3.0x</td><td>+61 ر.س</td></tr>
+        <tr><td>بدون إعلانات (مجاني)</td><td>—</td><td>—</td><td>—</td><td>+129 ر.س</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>مصادر الزيارات</h3>
+      <canvas id="ch2" height="170"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- الطلبات -->
+<section class="view" id="v2">
+  <div class="chips">
+    <span class="chip on">الكل (43)</span><span class="chip">بانتظار الدفع (2)</span><span class="chip">مدفوع (18)</span><span class="chip">قيد التجهيز (9)</span><span class="chip">تم الشحن (8)</span><span class="chip">تم التوصيل (5)</span><span class="chip">ملغي (1)</span>
+  </div>
+  <div class="searchbar"><input placeholder="ابحث برقم الطلب أو اسم العميل أو الجوال…"><button class="btn ghost">تصدير CSV</button></div>
+  <div class="card">
+    <table>
+      <tr><th>الطلب</th><th>التاريخ</th><th>العميل</th><th>المدينة</th><th>المنتجات</th><th>الإجمالي</th><th>الدفع</th><th>المصدر</th><th>الحالة</th></tr>
+      <tr><td class="mono">#1043</td><td>اليوم 11:42</td><td>نورة ع.</td><td>الرياض</td><td>باقة العناية بالسيارة 3 في 1 ×1</td><td>467 ر.س</td><td>مدى ✓</td><td>إنستغرام</td><td><span class="tag t-info">قيد التجهيز</span></td></tr>
+      <tr><td class="mono">#1042</td><td>اليوم 10:15</td><td>فهد س.</td><td>جدة</td><td>ممسحة البخاخ 2 في 1 ×1</td><td>113 ر.س</td><td>Apple Pay ✓</td><td>تيك توك</td><td><span class="tag t-ok">تم الشحن</span></td></tr>
+      <tr><td class="mono">#1041</td><td>اليوم 09:03</td><td>ريم م.</td><td>الدمام</td><td>منظم أدراج ×1</td><td>117 ر.س</td><td>بطاقة ✓</td><td>جوجل</td><td><span class="tag t-wait">بانتظار الشحن</span></td></tr>
+      <tr><td class="mono">#1040</td><td>أمس 21:37</td><td>سلطان ق.</td><td>الرياض</td><td>باقة العناية بالسيارة ×1</td><td>467 ر.س</td><td>مدى ✓</td><td>إنستغرام</td><td><span class="tag t-ok">تم التوصيل</span></td></tr>
+      <tr><td class="mono">#1039</td><td>أمس 18:22</td><td>هند أ.</td><td>مكة</td><td>ممسحة البخاخ ×2</td><td>198 ر.س</td><td>STC Pay ✓</td><td>مباشر</td><td><span class="tag t-ok">تم التوصيل</span></td></tr>
+      <tr><td class="mono">#1038</td><td>أمس 15:10</td><td>ماجد ب.</td><td>الخبر</td><td>باقة العناية بالسيارة ×1</td><td>467 ر.س</td><td>—</td><td>تيك توك</td><td><span class="tag t-wait">بانتظار الدفع</span></td></tr>
+      <tr><td class="mono">#1037</td><td>أمس 12:48</td><td>أمل ر.</td><td>أبها</td><td>منظم أدراج ×2</td><td>206 ر.س</td><td>بطاقة ✓</td><td>إنستغرام</td><td><span class="tag t-ok">تم الشحن</span></td></tr>
+      <tr><td class="mono">#1036</td><td>أمس 09:55</td><td>خالد ن.</td><td>تبوك</td><td>ممسحة البخاخ ×1</td><td>113 ر.س</td><td>—</td><td>مباشر</td><td><span class="tag t-off">ملغي</span></td></tr>
+    </table>
+  </div>
+  <div class="note">في النسخة المتصلة: تُسحب الطلبات لحظيًا من Easy Orders مع حالة الدفع من بوابة ضامنكم، ومصدر الطلب من UTM + البكسل.</div>
+</section>
+
+<!-- المخزون -->
+<section class="view" id="v3">
+  <div class="alert crit"><div>⚠️<div><b>تنبيهان مخزون:</b> منتجان تحت حد إعادة الطلب. حدّد حدًا لكل منتج وتصلك رسالة قبل النفاد بأيام.</div></div></div>
+  <div class="card">
+    <h3>المخزون — مزامنة المورّد (تاجر) والمتجر</h3>
+    <table>
+      <tr><th>المنتج</th><th>SKU</th><th>سعر البيع</th><th>التكلفة</th><th>هامش الربح</th><th>المتوفر</th><th>مبيعات/يوم</th><th>يكفي لـ</th><th>الحالة</th></tr>
+      <tr><td>باقة العناية بالسيارة 3 في 1 (BOSS)</td><td class="mono">SA050101ZPP0199</td><td>439 ر.س</td><td>369 ر.س</td><td>70 ر.س (16%)</td><td>34</td><td>4</td><td>8 أيام</td><td><span class="tag t-ok">متوفر</span></td></tr>
+      <tr><td>ممسحة البخاخ 2 في 1</td><td class="mono">—</td><td>85 ر.س</td><td>52 ر.س</td><td>33 ر.س (39%)</td><td>8</td><td>6</td><td>يوم واحد</td><td><span class="tag t-bad">حرج</span></td></tr>
+      <tr><td>منظم أدراج قابل للتعديل</td><td class="mono">—</td><td>89 ر.س</td><td>61 ر.س</td><td>28 ر.س (31%)</td><td>21</td><td>3</td><td>7 أيام</td><td><span class="tag t-wait">منخفض</span></td></tr>
+    </table>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>قيمة المخزون</h3><div class="val" style="font-size:22px;font-weight:800">14,847 ر.س</div><div class="sub">بسعر التكلفة · 63 قطعة</div></div>
+    <div class="card"><h3>حد إعادة الطلب</h3><div class="sub" style="margin:6px 0">ممسحة البخاخ: تنبيه عند 15 قطعة</div><div class="progress"><i style="width:53%"></i></div><div class="sub" style="margin-top:6px">8 / 15</div></div>
+    <div class="card"><h3>آخر مزامنة مع المورّد</h3><div class="val" style="font-size:22px;font-weight:800">قبل 4 دقائق</div><div class="sub">تلقائية كل 15 دقيقة ✓</div></div>
+  </div>
+</section>
+
+<!-- الإعلانات -->
+<section class="view" id="v4">
+  <div class="note">بعد ربط حساباتك الإعلانية، تُحسب هذه الأرقام من إنفاقك الفعلي وطلبات متجرك الفعلية — بما فيها الربح بعد تكلفة المنتج والشحن.</div>
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">إجمالي الإنفاق</div><div class="val">610 ر.س</div><div class="chg down">▲ 9%</div></div>
+    <div class="kpi"><div class="lbl">مبيعات منسوبة للإعلانات</div><div class="val">1,912 ر.س</div><div class="chg up">▲ 18%</div></div>
+    <div class="kpi"><div class="lbl">ROAS</div><div class="val">3.1x</div><div class="chg up">الهدف 3x</div></div>
+    <div class="kpi"><div class="lbl">تكلفة الطلب الواحد</div><div class="val">14.2 ر.س</div><div class="chg up">▼ أفضل من 16.8</div></div>
+    <div class="kpi"><div class="lbl">الربح بعد الإعلانات والتكاليف</div><div class="val">428 ر.س</div><div class="chg up">هامش 22%</div></div>
+  </div>
+  <div class="card">
+    <h3>المنصات — الإنفاق مقابل العائد</h3>
+    <canvas id="ch3" height="90"></canvas>
+  </div>
+  <div class="card">
+    <h3>تفصيل المنصات</h3>
+    <table>
+      <tr><th>المنصة</th><th>الحالة</th><th>الإنفاق</th><th>النقرات</th><th>الطلبات</th><th>المبيعات</th><th>ROAS</th><th>ربح صافٍ</th></tr>
+      <tr><td>Meta — فيسبوك وإنستغرام</td><td><span class="tag t-ok">متصل</span></td><td>320 ر.س</td><td>1,840</td><td>24</td><td>1,120 ر.س</td><td class="roas-good">3.5x</td><td class="roas-good">+186 ر.س</td></tr>
+      <tr><td>TikTok Ads</td><td><span class="tag t-ok">متصل</span></td><td>190 ر.س</td><td>2,310</td><td>11</td><td>494 ر.س</td><td class="roas-mid">2.6x</td><td class="roas-mid">+52 ر.س</td></tr>
+      <tr><td>Google Ads</td><td><span class="tag t-ok">متصل</span></td><td>100 ر.س</td><td>610</td><td>5</td><td>298 ر.س</td><td class="roas-mid">3.0x</td><td class="roas-good">+61 ر.س</td></tr>
+      <tr><td>Snapchat Ads</td><td><span class="tag t-off">غير متصل</span></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- الربط -->
+<section class="view" id="v5">
+  <div class="note">اربط كل منصة بحسابها الرسمي مرة واحدة (OAuth) — نقرأ الإنفاق والأداء فقط، ولا ننشر ولا نعدّل حملاتك إلا بطلب منك.</div>
+  <div class="conn"><div class="who"><div class="avatar" style="background:#1877F2">f</div><div><b>Meta — فيسبوك وإنستغرام</b><small>حساب إعلاني · بكسل · كتالوج · صفحة إنستغرام التجارية</small></div></div><button class="btn" onclick="openModal('m-meta')">ابدأ الربط</button></div>
+  <div class="conn"><div class="who"><div class="avatar" style="background:#111">♪</div><div><b>TikTok for Business</b><small>مركز الإعلانات · Events API · البكسل</small></div></div><button class="btn" onclick="openModal('m-tt')">ابدأ الربط</button></div>
+  <div class="conn"><div class="who"><div class="avatar" style="background:#4285F4">G</div><div><b>Google Ads + GA4</b><small>الحساب الإعلاني · خاصية القياس · روابط التحويل</small></div></div><button class="btn" onclick="openModal('m-gg')">ابدأ الربط</button></div>
+  <div class="conn"><div class="who"><div class="avatar" style="background:#FFFC00;color:#111">👻</div><div><b>Snapchat Ads</b><small>الحساب الإعلاني · Snap Pixel</small></div></div><button class="btn" onclick="openModal('m-sc')">ابدأ الربط</button></div>
+  <div class="conn" style="border-color:#CBEAD9;background:#F6FEF9"><div class="who"><div class="avatar" style="background:var(--brand)">EO</div><div><b>Easy Orders — متجرك</b><small>الطلبات والمنتجات والمخزون — مفتاح API مربوط</small></div></div><span class="tag t-ok">متصل ✓</span></div>
+  <div class="conn" style="border-color:#CBEAD9;background:#F6FEF9"><div class="who"><div class="avatar" style="background:#1B9E77">T</div><div><b>تاجر — المورّد</b><small>مزامنة المخزون والتكلفة وحالة الشحن للطلبات</small></div></div><span class="tag t-ok">متصل ✓</span></div>
+</section>
+
+<!-- البكسل -->
+<section class="view" id="v6">
+  <div class="grid2">
+    <div class="card">
+      <h3>معالج ربط بكسل Meta — بلا كود</h3>
+      <div class="steps">
+        <div class="step"><div><b>افتح مدير الأحداث في حسابك الإعلاني</b><p>Meta Business Suite ← كل الأدوات ← مدير الأحداث ← اختر البكسل أو أنشئ واحدًا باسم متجرك.</p></div></div>
+        <div class="step"><div><b>انسخ معرّف البكسل (15–16 خانة)</b><p>يظهر تحت اسم البكسل في الإعدادات.</p></div></div>
+        <div class="step"><div><b>الصقه هنا واترك التركيب علينا</b><p>نركّبه في المتجر ونفعّل أحداث: مشاهدة منتج، إضافة للسلة، بدء الدفع، شراء.</p>
+          <div class="field"><input class="mono" placeholder="1234567890123456"><button class="btn">تحقق واربط</button></div></div></div>
+        <div class="step"><div><b>اختبار مباشر أمامك</b><p>نرسل حدثًا تجريبيًا ونعرض تأكيد الاستلام من Meta خلال دقيقة.</p></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>حالة البكسلات المركبة</h3>
+        <table>
+          <tr><th>البكسل</th><th>المعرّف</th><th>آخر حدث</th><th>الحالة</th></tr>
+          <tr><td>Meta رئيسي</td><td class="mono">1385182156768006</td><td>شراء — قبل 6 د</td><td><span class="tag t-ok">سليم</span></td></tr>
+          <tr><td>Meta احتياطي</td><td class="mono">1618266729602757</td><td>مشاهدة — قبل 12 د</td><td><span class="tag t-ok">سليم</span></td></tr>
+          <tr><td>TikTok</td><td class="mono">DBETKQBC77U4J2JQE01G</td><td>بدء دفع — قبل 3 د</td><td><span class="tag t-ok">سليم</span></td></tr>
+          <tr><td>GA4 — قياس جوجل</td><td class="mono">G-Q4DDKPM751</td><td>زيارة — الآن</td><td><span class="tag t-ok">سليم</span></td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>الأحداث المفعّلة تلقائيًا</h3>
+        <div class="chips"><span class="chip on">PageView</span><span class="chip on">ViewContent</span><span class="chip on">AddToCart</span><span class="chip on">InitiateCheckout</span><span class="chip on">Purchase</span></div>
+        <p class="sub">كل الأحداث تُرسل من الخادم (Conversion API) وليس من المتصفح فقط — دقة أعلى حتى مع حاجب الإعلانات.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- التنبيهات -->
+<section class="view" id="v7">
+  <div class="card">
+    <h3>مركز التنبيهات</h3>
+    <div class="alert crit"><div>⚠️<div><b>مخزون حرج:</b> ممسحة البخاخ 2 في 1 — 8 قطع متبقية، تكفي يومًا واحدًا بالمعدل الحالي.<div class="t">اليوم 11:20 · قاعدة: مخزون أقل من 15</div></div></div></div>
+    <div class="alert crit"><div>🧾<div><b>طلبان بانتظار الدفع أكثر من 3 ساعات</b> — يُنصح برسالة تذكير للعميل.<div class="t">اليوم 10:05 · قاعدة: دفع معلّق</div></div></div></div>
+    <div class="alert"><div>📉<div><b>ROAS تيك توك هبط</b> من 3.4x إلى 2.6x خلال 3 أيام — راجع الإعلان الأخير.<div class="t">أمس 22:14 · قاعدة: هبوط ROAS أكثر من 20%</div></div></div></div>
+    <div class="alert good"><div>✅<div><b>هدف ROAS تحقق</b> على Meta لثلاثة أيام متتالية (فوق 3x).<div class="t">أمس 09:00</div></div></div></div>
+    <div class="alert good"><div>🔗<div><b>اكتمل ربط بكسل تيك توك</b> والأحداث تصل بنجاح.<div class="t">قبل يومين</div></div></div></div>
+  </div>
+  <div class="card">
+    <h3>قواعد التنبيه (تُخصَّص لكل تاجر)</h3>
+    <table>
+      <tr><th>القاعدة</th><th>الحد</th><th>القناة</th><th>مفعّلة</th></tr>
+      <tr><td>مخزون تحت الحد</td><td>15 قطعة</td><td>واتساب + بريد</td><td>✓</td></tr>
+      <tr><td>هبوط ROAS</td><td>أكثر من 20% خلال 3 أيام</td><td>واتساب</td><td>✓</td></tr>
+      <tr><td>طلب بانتظار الدفع</td><td>أكثر من 3 ساعات</td><td>بريد</td><td>✓</td></tr>
+      <tr><td>طلب جديد</td><td>فوري</td><td>واتساب</td><td>✓</td></tr>
+    </table>
+  </div>
+</section>
+</main>
+</div>
+
+<!-- Modals -->
+<div class="modal-back" id="m-meta"><div class="modal"><button class="x" onclick="closeModal('m-meta')">✕</button>
+<h3>ربط Meta — فيسبوك وإنستغرام</h3>
+<div class="steps">
+<div class="step"><div><b>سجّل دخولك إلى Meta</b><p>تُفتح نافذة رسمية من فيسبوك — لا نرى كلمة مرورك أبدًا.</p></div></div>
+<div class="step"><div><b>اختر حسابك الإعلاني وصفحتك</b><p>نعرض لك حساباتك الإعلانية وصفحات إنستغرام التجارية لتختار.</p></div></div>
+<div class="step"><div><b>اختر البكسل أو أنشئ واحدًا</b><p>نركّبه في المتجر تلقائيًا ونفعّل Conversion API.</p></div></div>
+</div>
+<button class="btn" style="width:100%;margin-top:10px">متابعة إلى فيسبوك ←</button>
+</div></div>
+<div class="modal-back" id="m-tt"><div class="modal"><button class="x" onclick="closeModal('m-tt')">✕</button>
+<h3>ربط TikTok for Business</h3>
+<div class="steps">
+<div class="step"><div><b>سجّل دخولك عبر نافذة تيك توك الرسمية</b><p>OAuth رسمي — صلاحية قراءة التقارير فقط.</p></div></div>
+<div class="step"><div><b>اختر مركز الإعلانات</b><p>نقرأ الإنفاق والحملات والمجموعات الإعلانية.</p></div></div>
+<div class="step"><div><b>البكسل وEvents API</b><p>نركّب البكسل في المتجر ونفعّل أحداث الخادم تلقائيًا.</p></div></div>
+</div>
+<button class="btn" style="width:100%;margin-top:10px">متابعة إلى تيك توك ←</button>
+</div></div>
+<div class="modal-back" id="m-gg"><div class="modal"><button class="x" onclick="closeModal('m-gg')">✕</button>
+<h3>ربط Google Ads + GA4</h3>
+<div class="steps">
+<div class="step"><div><b>سجّل دخولك بحساب جوجل</b><p>نافذة Google الرسمية — صلاحية قراءة فقط.</p></div></div>
+<div class="step"><div><b>اختر حساب الإعلانات وخاصية GA4</b><p>نربط التحويلات بالقياس الموجود لديك.</p></div></div>
+<div class="step"><div><b>نثبّت وسم القياس في المتجر</b><p>كما فعلنا اليوم يدويًا بمعرّف G-Q4DDKPM751 — هنا يتم آليًا.</p></div></div>
+</div>
+<button class="btn" style="width:100%;margin-top:10px">متابعة إلى جوجل ←</button>
+</div></div>
+<div class="modal-back" id="m-sc"><div class="modal"><button class="x" onclick="closeModal('m-sc')">✕</button>
+<h3>ربط Snapchat Ads</h3>
+<div class="steps">
+<div class="step"><div><b>سجّل دخولك عبر نافذة سناب الرسمية</b></div></div>
+<div class="step"><div><b>اختر الحساب الإعلاني</b><p>نقرأ الإنفاق والأداء يوميًا.</p></div></div>
+<div class="step"><div><b>نركّب Snap Pixel تلقائيًا</b><p>مع أحداث الشراء من الخادم.</p></div></div>
+</div>
+<button class="btn" style="width:100%;margin-top:10px">متابعة إلى سناب ←</button>
+</div></div>
 
 <script>
 const links=[...document.querySelectorAll('.nav a')];
-const titles={v1:'نظرة عامة',v2:'الطلبات',v3:'المخزون',v4:'ربط المنصات',v5:'معالج البكسل'};
-links.forEach(a=>a.addEventListener('click',e=>{
-  e.preventDefault();
-  links.forEach(x=>x.classList.remove('on'));a.classList.add('on');
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-  document.getElementById(a.dataset.v).classList.add('on');
-  document.getElementById('ttl').textContent=titles[a.dataset.v];
-  window.scrollTo(0,0);
-}));
-// charts
-const c1=document.getElementById('ch1');
-if(c1){new Chart(c1,{type:'line',data:{labels:['15','16','17','18','19','20','21','22','23','24','25','26','27','28'],
-datasets:[{label:'المبيعات (ر.س)',data:[520,780,640,910,1230,870,1450,1100,980,1340,1620,1490,1750,1912],borderColor:'#6454F0',backgroundColor:'rgba(100,84,240,.12)',fill:true,tension:.35,pointRadius:3}]},
-options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});}
-const c2=document.getElementById('ch2');
-if(c2){new Chart(c2,{type:'doughnut',data:{labels:['إنستغرام','تيك توك','جوجل','مباشر'],datasets:[{data:[42,28,18,12],backgroundColor:['#6454F0','#1B1D2A','#F2B33D','#9aa0c3'],borderWidth:0}]},
-options:{plugins:{legend:{position:'bottom',labels:{font:{size:11}}}}}});}
+const titles={v1:'نظرة عامة',v2:'الطلبات',v3:'المخزون',v4:'الأداء الإعلاني',v5:'ربط المنصات',v6:'معالج البكسل',v7:'التنبيهات'};
+function go(v){links.forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on',s.id===v));
+  document.getElementById('ttl').textContent=titles[v];window.scrollTo(0,0);}
+links.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.v);}));
+document.querySelectorAll('[data-goto]').forEach(el=>el.addEventListener('click',()=>go(el.dataset.goto)));
+document.querySelectorAll('#ranges button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#ranges button').forEach(x=>x.classList.remove('on'));b.classList.add('on');}));
+document.querySelectorAll('.chips .chip').forEach(c=>c.addEventListener('click',()=>{c.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');}));
+function openModal(id){document.getElementById(id).classList.add('on');}
+function closeModal(id){document.getElementById(id).classList.remove('on');}
+document.querySelectorAll('.modal-back').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on');}));
+
+const days=['15','16','17','18','19','20','21','22','23','24','25','26','27','28'];
+if(document.getElementById('ch1'))new Chart(ch1,{type:'line',data:{labels:days,datasets:[
+ {label:'المبيعات',data:[520,780,640,910,1230,870,1450,1100,980,1340,1620,1490,1750,1912],borderColor:'#6454F0',backgroundColor:'rgba(100,84,240,.10)',fill:true,tension:.35,pointRadius:2.5},
+ {label:'الإنفاق',data:[180,220,190,260,310,240,330,290,270,320,380,350,410,430],borderColor:'#F2B33D',backgroundColor:'transparent',borderDash:[6,4],tension:.35,pointRadius:0}]},
+ options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
+if(document.getElementById('ch2'))new Chart(ch2,{type:'doughnut',data:{labels:['إنستغرام','تيك توك','جوجل','مباشر'],datasets:[{data:[42,28,18,12],backgroundColor:['#6454F0','#1B1D2A','#F2B33D','#9aa0c3'],borderWidth:0}]},options:{plugins:{legend:{position:'bottom',labels:{font:{size:11}}}}}});
+if(document.getElementById('ch3'))new Chart(ch3,{type:'bar',data:{labels:['Meta','تيك توك','جوجل'],datasets:[
+ {label:'الإنفاق',data:[320,190,100],backgroundColor:'#F2B33D',borderRadius:6},
+ {label:'المبيعات',data:[1120,494,298],backgroundColor:'#6454F0',borderRadius:6},
+ {label:'صافي الربح',data:[186,52,61],backgroundColor:'#12A15F',borderRadius:6}]},
+ options:{plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},scales:{y:{beginAtZero:true}}}});
 </script>
 </body>
 </html>
