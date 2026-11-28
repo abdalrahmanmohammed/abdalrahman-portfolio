@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "projects": [
     {
       "id": "fleet-ops",
@@ -215,6 +215,64 @@
         "Demo",
         "Arabic",
         "Storefront"
+      ]
+    },
+    {
+      "id": "zaviro-carcare-kit",
+      "type": "store",
+      "status": "live",
+      "url": "https://aneeqa2.myeasyorders.com/products/baqh-alanayh-balsyarh-3-fy-1-or-dryl-boss-148-fwlt-mdhkhh-fwm-520-wat-mshghl-syarh-3-fy-1-or-dhman-hta-aamyn",
+      "title": {
+        "ar": "باقة العناية بالسيارة 3 في 1 — متجر زافيرو",
+        "en": "Zaviro car-care 3-in-1 kit"
+      },
+      "desc": {
+        "ar": "استيراد منتج باقة العناية بالسيارة من تاجر (تكلفة 369، بيع 439 ر.س) إلى متجر Easy Orders مع التحقق الكامل من مسار الدفع الإلكتروني حتى صفحة ضامنكم (إجمالي 467 شامل الشحن). دفع أونلاين فقط بدون دفع عند الاستلام.",
+        "en": "Imported the Taager car-care 3-in-1 kit (cost 369, price 439 SAR) into the Easy Orders store and verified the full online-payment checkout to the Damenkom gateway (467 SAR incl. shipping). Online payment only, no cash on delivery."
+      },
+      "tags": [
+        "Store",
+        "Dropshipping",
+        "Payments"
+      ]
+    },
+    {
+      "id": "zaviro-store-analytics",
+      "type": "platform",
+      "status": "live",
+      "url": "https://aneeqa2.myeasyorders.com",
+      "title": {
+        "ar": "تحليلات متجر زافيرو (GA4)",
+        "en": "Zaviro store analytics (GA4)"
+      },
+      "desc": {
+        "ar": "إنشاء مسار ويب جديد باسم Zaviro Store في خاصية Google Analytics (Abdalrahman Web) وتركيب معرف القياس G-Q4DDKPM751 في ترويسة المتجر مع تحقق خارجي من ظهوره في الصفحة.",
+        "en": "Created a dedicated GA4 web stream (Zaviro Store) under the Abdalrahman Web property and installed measurement ID G-Q4DDKPM751 in the storefront header, verified live via external fetch."
+      },
+      "tags": [
+        "Analytics",
+        "GA4",
+        "Store"
+      ]
+    },
+    {
+      "id": "zaviro-merchant-dashboard",
+      "type": "platform",
+      "status": "demo",
+      "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/dashboard/",
+      "title": {
+        "ar": "لوحة تاجر زافيرو (نموذج أولي)",
+        "en": "Zaviro merchant dashboard (demo)"
+      },
+      "desc": {
+        "ar": "نموذج أولي للوحة تحكم التاجر: مؤشرات مبيعات وطلبات ومخزون في مكان واحد، شاشة ربط منصات الإعلانات (Meta وتيك توك وجوجل وسناب) عبر الواجهات الرسمية، ومعالج خطوة بخطوة لربط البكسل بدون كود.",
+        "en": "Merchant-dashboard prototype: sales, orders and inventory indicators in one place, ad-platform connection screen (Meta, TikTok, Google, Snap) via official APIs, and a no-code guided pixel-linking wizard."
+      },
+      "tags": [
+        "Dashboard",
+        "Demo",
+        "Analytics",
+        "Arabic"
       ]
     }
   ]
