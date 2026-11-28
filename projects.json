@@ -265,8 +265,8 @@
         "en": "Zaviro merchant dashboard v3"
       },
       "desc": {
-        "ar": "لوحة تاجر عربية RTL: درج تفاصيل الطلب وحالاته، فلاتر وتصدير CSV، نطاقات تاريخ تعمل فعليًا، قمع التحويل وCohorts، حاسبة ربح وROAS التعادل، عملاء وتقارير، ومعالج بكسل. مبنية بأنماط مفتوحة المصدر (Tabler, shadcn/ui, Tremor, refine) مع شاشة اعتمادات.",
-        "en": "Arabic RTL merchant dashboard: order drawer with status flow, filters and CSV export, working date ranges, conversion funnel and cohorts, profit calculator with break-even ROAS, customers, reports and pixel wizard. Built with open-source patterns (Tabler, shadcn/ui, Tremor, refine) with a credits screen."
+        "ar": "لوحة تاجر عربية RTL: درج تفاصيل الطلب وحالاته، فلاتر وتصدير CSV، نطاقات تاريخ تعمل فعليًا، قمع التحويل وCohorts، حاسبة ربح وROAS التعادل، عملاء وتقارير، ومعالج بكسل. مبنية بأنماط مفتوحة المصدر (Tabler, shadcn/ui, Tremor, refine) مع شاشة اعتمادات. متصلة بتغذية طلبات حية عبر Cloudflare Worker وwebhooks من Easy Orders (الأسماء مخفية جزئيًا).",
+        "en": "Arabic RTL merchant dashboard: order drawer with status flow, filters and CSV export, working date ranges, conversion funnel and cohorts, profit calculator with break-even ROAS, customers, reports and pixel wizard. Built with open-source patterns (Tabler, shadcn/ui, Tremor, refine) with a credits screen. Connected to a live order feed through a Cloudflare Worker and Easy Orders webhooks (names masked)."
       },
       "tags": [
         "Dashboard",
