@@ -84,6 +84,58 @@ tr:hover td{background:var(--soft)}
 .roas-good{color:var(--ok);font-weight:700}.roas-mid{color:var(--warn);font-weight:700}.roas-bad{color:var(--bad);font-weight:700}
 .legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-bottom:8px}
 .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-left:4px}
+
+/* v3 additions — patterns adapted from Tabler (MIT), shadcn/ui (MIT), Tremor (Apache-2.0); see Credits screen */
+.nav .sec{font-size:10.5px;color:#7f85b3;padding:12px 12px 5px;letter-spacing:.3px}
+#v2 tbody tr,#v2 table tr:not(:first-child){cursor:pointer}
+#v2 table tr:not(:first-child):hover td{background:#F5F4FF}
+.drawer-back{position:fixed;inset:0;background:rgba(20,22,40,.4);display:none;z-index:60}
+.drawer-back.on{display:block}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:430px;max-width:96vw;background:#fff;z-index:61;transform:translateX(-102%);transition:transform .25s ease;box-shadow:8px 0 40px rgba(0,0,0,.18);overflow:auto;padding:22px}
+.drawer.on{transform:none}
+.drawer h3{font-size:17px;margin-bottom:4px}
+.drawer .x{position:absolute;left:14px;top:12px;border:none;background:none;font-size:20px;cursor:pointer;color:var(--muted)}
+.dsec{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.dsec h4{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600}
+.row2{display:flex;justify-content:space-between;padding:5px 0;font-size:13px}
+.row2.tot{font-weight:800;border-top:1px dashed var(--line);margin-top:4px;padding-top:9px}
+.tl{display:flex;justify-content:space-between;margin:6px 0 2px}
+.tl span{flex:1;text-align:center;font-size:10.5px;color:#b0b4cc;position:relative}
+.tl span::before{content:"";display:block;width:14px;height:14px;border-radius:50%;background:#E3E5F3;margin:0 auto 5px}
+.tl span.done{color:var(--ink)}.tl span.done::before{background:var(--ok)}
+.tl span.cur::before{background:var(--brand);box-shadow:0 0 0 4px #DDD9FC}
+.sel{border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:12.5px;background:#fff}
+.skel{display:none}
+.loading .skel{display:block}.loading .real{display:none}
+.skel i{display:block;height:84px;border-radius:14px;margin-bottom:12px;background:linear-gradient(90deg,#ECEEF7 25%,#F6F7FC 50%,#ECEEF7 75%);background-size:200% 100%;animation:sh 1s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.fun{display:flex;flex-direction:column;gap:8px}
+.fun .bar{display:flex;align-items:center;gap:10px}
+.fun .bar b{width:120px;font-size:12.5px}
+.fun .bar div{height:30px;border-radius:8px;background:linear-gradient(90deg,var(--brand),#8f84ff);color:#fff;font-size:12px;display:flex;align-items:center;padding:0 10px;min-width:60px}
+.fun .bar em{font-style:normal;color:var(--muted);font-size:11.5px;width:90px}
+.cohort td{text-align:center;font-weight:600;font-size:12px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc label{display:block;font-size:12px;color:var(--muted);margin-bottom:10px}
+.calc input[type=number],.calc input[type=range]{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:13px;margin-top:4px}
+.res{background:linear-gradient(135deg,#15182B,#2b2f66);color:#fff;border-radius:14px;padding:18px}
+.res .big{font-size:30px;font-weight:800;margin:4px 0 12px}
+.res .row2{border-bottom:1px solid rgba(255,255,255,.12)}
+.live-ban{display:flex;align-items:center;gap:10px;background:#FFF7E6;border:1px solid #F5DDA6;color:#7a5200;border-radius:10px;padding:9px 14px;font-size:12px;margin-bottom:12px;line-height:1.7}
+.live-ban.ok{background:#E8F7EF;border-color:#BCE5CE;color:#0b6b3d}
+.dot{width:9px;height:9px;border-radius:50%;background:currentColor;display:inline-block}
+.cmd-back{position:fixed;inset:0;background:rgba(20,22,40,.45);display:none;align-items:flex-start;justify-content:center;padding-top:14vh;z-index:70}
+.cmd-back.on{display:flex}
+.cmd{background:#fff;border-radius:14px;width:460px;max-width:92vw;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.cmd input{width:100%;border:none;border-bottom:1px solid var(--line);padding:14px 16px;font-size:14px;font-family:inherit;outline:none}
+.cmd a{display:block;padding:10px 16px;color:var(--ink);text-decoration:none;font-size:13px;cursor:pointer}
+.cmd a:hover,.cmd a.hl{background:#F1F0FE}
+.toast{position:fixed;bottom:22px;right:50%;transform:translateX(50%);background:#15182B;color:#fff;padding:10px 18px;border-radius:10px;font-size:12.5px;z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+.switch{display:inline-block;width:38px;height:22px;background:#D4D7E8;border-radius:11px;position:relative;cursor:pointer;vertical-align:middle}
+.switch::after{content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+.switch.on{background:var(--ok)}.switch.on::after{right:19px}
+.kbd{font-size:10.5px;border:1px solid #34386a;border-radius:5px;padding:1px 6px;color:#9aa0c3;margin-right:auto}
 </style>
 </head>
 <body>
@@ -91,6 +143,7 @@ tr:hover td{background:var(--soft)}
 <aside class="side">
   <div class="logo"><div class="z">Z</div><div><b>ZAVIRO</b><small>لوحة التاجر الذكية</small></div></div>
   <nav class="nav">
+    <a href="#" id="cmdBtn" style="background:#262a55"><span class="ic">🔎</span>بحث سريع<span class="kbd">Ctrl K</span></a>
     <a href="#" class="on" data-v="v1"><span class="ic">📊</span>نظرة عامة</a>
     <a href="#" data-v="v2"><span class="ic">🧾</span>الطلبات<span class="badge">5</span></a>
     <a href="#" data-v="v3"><span class="ic">📦</span>المخزون<span class="badge" style="background:var(--warn)">2</span></a>
@@ -98,8 +151,14 @@ tr:hover td{background:var(--soft)}
     <a href="#" data-v="v5"><span class="ic">🔗</span>ربط المنصات</a>
     <a href="#" data-v="v6"><span class="ic">🎯</span>معالج البكسل</a>
     <a href="#" data-v="v7"><span class="ic">🔔</span>التنبيهات<span class="badge">3</span></a>
+    <div class="sec">تحليلات وأدوات</div>
+    <a href="#" data-v="v8"><span class="ic">🔻</span>التحليلات والقمع</a>
+    <a href="#" data-v="v9"><span class="ic">🧮</span>حاسبة الربح</a>
+    <a href="#" data-v="v10"><span class="ic">👥</span>العملاء</a>
+    <a href="#" data-v="v11"><span class="ic">📑</span>التقارير</a>
+    <a href="#" data-v="v12"><span class="ic">⚖️</span>الاعتمادات</a>
   </nav>
-  <div class="foot">نسخة عرض تقديمي — كل الأرقام بيانات تجريبية مُعلَّمة، وتُستبدل ببيانات متجرك الحقيقية فور ربطه.</div>
+  <div class="foot">النسخة 3 — الأرقام تجريبية موسومة حتى يتصل المتجر، وخلاصة الطلبات الحقيقية تحل محلها تلقائيًا.</div>
 </aside>
 
 <main>
@@ -284,6 +343,79 @@ tr:hover td{background:var(--soft)}
     </table>
   </div>
 </section>
+<section class="view" id="v8">
+  <div class="note">مسار التحويل وجداول الاحتفاظ بالعملاء. الأرقام تجريبية حتى يتصل البكسل وخلاصة الطلبات الحقيقية.</div>
+  <div class="grid2">
+    <div class="card"><h3>قمع التحويل <span class="tag t-wait">تجريبي</span></h3>
+      <div class="fun" id="funnel"></div></div>
+    <div class="card"><h3>أفضل المصادر</h3>
+      <table id="srcT"><tr><th>المصدر</th><th>زيارات</th><th>طلبات</th><th>تحويل</th></tr></table></div>
+  </div>
+  <div class="card"><h3>الاحتفاظ بالعملاء (Cohorts) — نسبة من عاد للشراء</h3>
+    <table class="cohort" id="cohT"></table></div>
+</section>
+
+<section class="view" id="v9">
+  <div class="note">احسب ربحك الحقيقي قبل ما تصرف على الإعلان. غيّر أي رقم وتتحدث النتيجة فورًا.</div>
+  <div class="grid2" style="grid-template-columns:1.2fr 1fr">
+    <div class="card"><h3>مدخلات المنتج</h3>
+      <div class="calc">
+        <label>سعر البيع (ر.س)<input type="number" id="c_price" value="439"></label>
+        <label>تكلفة المنتج (ر.س)<input type="number" id="c_cost" value="300"></label>
+        <label>الشحن على المتجر (ر.س)<input type="number" id="c_ship" value="28"></label>
+        <label>رسوم بوابة الدفع (%)<input type="number" id="c_fee" value="2.5" step="0.1"></label>
+        <label>تكلفة الإعلان لكل طلب CPA (ر.س)<input type="number" id="c_cpa" value="60"></label>
+        <label>نسبة المرتجعات (%)<input type="number" id="c_ret" value="5"></label>
+      </div>
+      <div class="note" style="margin:6px 0 0">القيم الابتدائية توضيحية (سعر باقة العناية بالسيارة 439 ر.س). عدّلها لتكلفتك الفعلية.</div>
+    </div>
+    <div class="res"><div style="font-size:12px;opacity:.7">صافي الربح للطلب الواحد</div><div class="big" id="r_net">—</div>
+      <div class="row2"><span>الإيراد</span><b id="r_rev"></b></div>
+      <div class="row2"><span>الهامش الصافي</span><b id="r_mar"></b></div>
+      <div class="row2"><span>ROAS التعادل</span><b id="r_be"></b></div>
+      <div class="row2"><span>أقصى CPA قبل الخسارة</span><b id="r_max"></b></div>
+      <div class="row2"><span>ربح 100 طلب</span><b id="r_100"></b></div>
+      <div id="r_msg" style="margin-top:12px;font-size:12.5px;line-height:1.8"></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="v10">
+  <div class="searchbar"><input id="custQ" placeholder="ابحث باسم العميل أو المدينة…"><select class="sel" id="custS"><option value="all">كل الشرائح</option><option>VIP</option><option>متكرر</option><option>جديد</option></select><button class="btn ghost" onclick="csv('customers')">تصدير CSV</button></div>
+  <div class="kpis" id="custK"></div>
+  <div class="card"><table id="custT"></table></div>
+</section>
+
+<section class="view" id="v11">
+  <div class="grid2" style="grid-template-columns:1fr 1.4fr">
+    <div class="card"><h3>إنشاء تقرير</h3>
+      <label style="font-size:12px;color:var(--muted)">نوع التقرير</label>
+      <select class="sel" id="repT" style="width:100%;margin:5px 0 12px"><option value="sales">المبيعات اليومية</option><option value="products">أداء المنتجات</option><option value="ads">الإنفاق الإعلاني و ROAS</option><option value="profit">الربح بعد التكاليف</option></select>
+      <label style="font-size:12px;color:var(--muted)">الفترة</label>
+      <select class="sel" id="repR" style="width:100%;margin:5px 0 14px"><option value="7">آخر 7 أيام</option><option value="14">آخر 14 يومًا</option><option value="30">آخر 30 يومًا</option></select>
+      <button class="btn" style="width:100%" onclick="runReport()">إنشاء التقرير</button>
+      <div class="dsec"><h4>تقارير مجدولة</h4>
+        <div class="row2"><span>ملخص أسبوعي (الأحد 9 ص)</span><i class="switch on" onclick="this.classList.toggle('on')"></i></div>
+        <div class="row2"><span>تنبيه المخزون الحرج</span><i class="switch on" onclick="this.classList.toggle('on')"></i></div>
+        <div class="row2"><span>تنبيه هبوط ROAS</span><i class="switch" onclick="this.classList.toggle('on')"></i></div></div>
+    </div>
+    <div class="card"><h3>نتيجة التقرير <button class="btn ghost" onclick="csv('report')">تحميل CSV</button></h3><div id="repOut" style="font-size:12.5px;color:var(--muted)">اختر النوع والفترة ثم اضغط «إنشاء التقرير».</div></div>
+  </div>
+</section>
+
+<section class="view" id="v12">
+  <div class="note">لوحة زافيرو مبنية بـ HTML وجافاسكربت خام، ومستوحاة في الأنماط (لا نسخ حرفي للكود) من مشاريع مفتوحة المصدر بتراخيص متساهلة. الاعتماد بالفعل على Chart.js للرسوم.</div>
+  <div class="card"><table>
+    <tr><th>المشروع</th><th>الرخصة</th><th>ما استفدنا منه</th></tr>
+    <tr><td><a href="https://github.com/chartjs/Chart.js" target="_blank">Chart.js</a></td><td>MIT</td><td>الرسوم البيانية (مستخدم مباشرة عبر CDN)</td></tr>
+    <tr><td><a href="https://github.com/tabler/tabler" target="_blank">Tabler</a></td><td>MIT</td><td>نمط بطاقات KPI وجداول الحالة وشريط الفلاتر</td></tr>
+    <tr><td><a href="https://github.com/shadcn-ui/ui" target="_blank">shadcn/ui</a> + <a href="https://github.com/satnaing/shadcn-admin" target="_blank">shadcn-admin</a></td><td>MIT</td><td>درج التفاصيل (Sheet) وقائمة الأوامر Ctrl+K وحالات التحميل</td></tr>
+    <tr><td><a href="https://github.com/tremorlabs/tremor" target="_blank">Tremor</a></td><td>Apache-2.0</td><td>نمط قمع التحويل وأشرطة الأداء ومؤشرات التغيّر</td></tr>
+    <tr><td><a href="https://github.com/refinedev/refine" target="_blank">refine</a> / <a href="https://github.com/marmelab/react-admin" target="_blank">react-admin</a></td><td>MIT</td><td>نمط فلاتر القوائم والتصدير إلى CSV</td></tr>
+    <tr><td><a href="https://github.com/saleor/saleor" target="_blank">Saleor</a> / <a href="https://github.com/spree/spree" target="_blank">Spree</a></td><td>BSD-3-Clause</td><td>نموذج دورة حالة الطلب (دفع ← تجهيز ← شحن ← توصيل)</td></tr>
+  </table></div>
+  <div class="note">أُهملت عمدًا: Medusa وPostHog (ترخيص غير قياسي)، Reaction (GPL)، Ever (AGPL).</div>
+</section>
 </main>
 </div>
 
@@ -325,6 +457,9 @@ tr:hover td{background:var(--soft)}
 <button class="btn" style="width:100%;margin-top:10px">متابعة إلى سناب ←</button>
 </div></div>
 
+<div class="drawer-back" id="drb"></div><aside class="drawer" id="dr"></aside>
+<div class="cmd-back" id="cmdB"><div class="cmd"><input id="cmdI" placeholder="اذهب إلى… (اكتب اسم القسم)"><div id="cmdL"></div></div></div>
+<div class="toast" id="toast"></div>
 <script>
 const links=[...document.querySelectorAll('.nav a')];
 const titles={v1:'نظرة عامة',v2:'الطلبات',v3:'المخزون',v4:'الأداء الإعلاني',v5:'ربط المنصات',v6:'معالج البكسل',v7:'التنبيهات'};
@@ -350,6 +485,139 @@ if(document.getElementById('ch3'))new Chart(ch3,{type:'bar',data:{labels:['Meta'
  {label:'المبيعات',data:[1120,494,298],backgroundColor:'#6454F0',borderRadius:6},
  {label:'صافي الربح',data:[186,52,61],backgroundColor:'#12A15F',borderRadius:6}]},
  options:{plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},scales:{y:{beginAtZero:true}}}});
+</script>
+<script>
+/* ===== v3 layer ===== */
+const FEED_URL=''; // set to the Worker URL once the real feed is live
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200);}
+Object.assign(titles,{v8:'التحليلات والقمع',v9:'حاسبة الربح',v10:'العملاء',v11:'التقارير',v12:'الاعتمادات المفتوحة'});
+
+// loading skeleton on view change
+const _go=go;
+go=function(v){const m=$('main');m.classList.add('loading');_go(v);setTimeout(()=>m.classList.remove('loading'),260);};
+const sk=document.createElement('div');sk.className='skel';sk.innerHTML='<i></i><i></i><i style="height:220px"></i>';$('.topbar').after(sk);
+const st=document.createElement('style');st.textContent='main.loading .view{display:none!important}';document.head.appendChild(st);
+
+// banner
+const ban=document.createElement('div');
+ban.className='live-ban';
+ban.innerHTML='<span class="dot"></span><span id="banT"></span>';
+$('.topbar').after(ban);
+function setBan(live,txt){ban.classList.toggle('ok',live);$('#banT').textContent=txt;}
+setBan(false,'وضع العرض: الأرقام تجريبية. خلاصة الطلبات الحقيقية من متجر زافيرو قيد الربط (Webhook من Easy Orders) وتحل محل التجريبية تلقائيًا.');
+
+// ---- date ranges that actually change numbers ----
+const R={
+ 0:{s:1912,o:12,a:610,roas:3.1,p:428,lbl:'اليوم',c:['+18%','+12%','+5%','+9%','','']},
+ 1:{s:9860,o:61,a:2380,roas:4.1,p:2150,lbl:'7 أيام',c:['+14%','+9%','+4%','+6%','','']},
+ 2:{s:38400,o:236,a:10200,roas:3.8,p:8300,lbl:'30 يومًا',c:['+22%','+17%','+3%','+11%','','']}};
+const base=[520,780,640,910,1230,870,1450,1100,980,1340,1620,1490,1750,1912];
+function series(n){const out=[];for(let i=0;i<n;i++){const k=base[i%14];out.push(Math.round(k*(0.85+((i*37)%30)/100)));}return out;}
+function applyRange(i){const d=R[i]||R[0];const k=$$('#v1 .kpi');
+ const vals=[fmt(d.s)+' ر.س',d.o,fmt(d.s/d.o)+' ر.س',fmt(d.a)+' ر.س',d.roas+'x',fmt(d.p)+' ر.س'];
+ k.forEach((el,j)=>{el.querySelector('.val').textContent=vals[j];});
+ k[0].querySelector('.chg').textContent='▲ '+d.c[0]+' عن الفترة السابقة';
+ k[1].querySelector('.chg').textContent='▲ '+d.c[1];k[2].querySelector('.chg').textContent='▲ '+d.c[2];
+ k[5].querySelector('.chg').textContent='هامش '+Math.round(d.p/d.s*100)+'%';
+ const ch=Chart.getChart('ch1');if(ch){const n=i==2?30:14;const sales=i==0?base:series(n);ch.data.labels=sales.map((_,x)=>x+1);ch.data.datasets[0].data=sales;ch.data.datasets[1].data=sales.map(v=>Math.round(v*d.a/d.s));ch.update();}
+ const h=$('#v1 .card h3');if(h)h.firstChild.textContent='المبيعات مقابل الإنفاق الإعلاني — '+d.lbl;}
+$$('#ranges button').forEach((b,i)=>b.addEventListener('click',()=>{if(i<3){applyRange(i);toast('تم تحديث الأرقام: '+R[i].lbl);}else toast('اختيار تاريخ مخصص: متاح بعد ربط البيانات الحقيقية');}));
+
+// ---- orders: filter, search, drawer, status flow, csv ----
+const STAT=[['بانتظار الدفع','t-wait'],['مدفوع','t-ok'],['قيد التجهيز','t-info'],['تم الشحن','t-ok'],['تم التوصيل','t-ok'],['ملغي','t-off']];
+let orders=[];
+function readOrders(){orders=$$('#v2 table tr').slice(1).map(tr=>{const c=[...tr.children].map(x=>x.textContent.trim());return {id:c[0],date:c[1],name:c[2],city:c[3],items:c[4],total:parseInt(c[5])||0,pay:c[6],src:c[7],status:c[8].replace('بانتظار الشحن','قيد التجهيز'),tr};});
+ orders.forEach(o=>o.tr.onclick=()=>openOrder(o));}
+readOrders();
+function tagClass(s){return (STAT.find(x=>x[0]===s)||['','t-wait'])[1];}
+function paintRow(o){const t=o.tr.lastElementChild.firstElementChild;t.textContent=o.status;t.className='tag '+tagClass(o.status);}
+let chipF='الكل';
+function applyOrderFilter(){const q=($('#v2 .searchbar input').value||'').trim();let n=0;
+ orders.forEach(o=>{const ok=(chipF==='الكل'||o.status===chipF)&&(!q||(o.id+o.name+o.city+o.items).includes(q));o.tr.style.display=ok?'':'none';if(ok)n++;});}
+$$('#v2 .chip').forEach(c=>c.addEventListener('click',()=>{chipF=c.textContent.replace(/\s*\(\d+\)/,'').trim();applyOrderFilter();}));
+$('#v2 .searchbar input').addEventListener('input',applyOrderFilter);
+$('#v2 .searchbar .btn').onclick=()=>csv('orders');
+const FLOW=['بانتظار الدفع','مدفوع','قيد التجهيز','تم الشحن','تم التوصيل'];
+let cur=null;
+function openOrder(o){cur=o;const sub=Math.max(o.total-28,0);const cost=Math.round(sub*0.66);const fee=Math.round(o.total*0.025);const net=o.total-28-cost-fee;
+ const idx=FLOW.indexOf(o.status);
+ $('#dr').innerHTML='<button class="x" onclick="closeDrawer()">✕</button><h3>الطلب '+o.id+'</h3><div class="sub">'+o.date+' · '+o.src+'</div>'
+ +'<div class="dsec"><h4>حالة الطلب</h4><div class="tl">'+FLOW.map((s,i)=>'<span class="'+(i<idx?'done':i==idx?'done cur':'')+'">'+s+'</span>').join('')+'</div>'
+ +(o.status==='ملغي'?'<div class="tag t-off" style="margin-top:8px">ملغي</div>':'')
+ +'<div style="display:flex;gap:8px;margin-top:12px"><select class="sel" id="stSel" style="flex:1">'+STAT.map(s=>'<option'+(s[0]===o.status?' selected':'')+'>'+s[0]+'</option>').join('')+'</select><button class="btn" onclick="saveStatus()">تحديث</button></div></div>'
+ +'<div class="dsec"><h4>العميل</h4><div class="row2"><span>الاسم</span><b>'+o.name+'</b></div><div class="row2"><span>المدينة</span><b>'+o.city+'</b></div><div class="row2"><span>الدفع</span><b>'+o.pay+'</b></div></div>'
+ +'<div class="dsec"><h4>المنتجات</h4><div class="row2"><span>'+o.items+'</span><b>'+fmt(sub)+' ر.س</b></div><div class="row2"><span>الشحن</span><b>28 ر.س</b></div><div class="row2 tot"><span>الإجمالي</span><b>'+fmt(o.total)+' ر.س</b></div></div>'
+ +'<div class="dsec"><h4>الربحية (تقدير)</h4><div class="row2"><span>تكلفة المنتج</span><b>'+fmt(cost)+' ر.س</b></div><div class="row2"><span>رسوم الدفع 2.5%</span><b>'+fee+' ر.س</b></div><div class="row2 tot"><span>صافي قبل الإعلان</span><b class="'+(net>0?'up':'down')+'">'+fmt(net)+' ر.س</b></div></div>'
+ +'<div class="dsec"><h4>ملاحظة داخلية</h4><div class="field"><input id="noteIn" placeholder="اكتب ملاحظة…"><button class="btn ghost" onclick="toast(\'تم حفظ الملاحظة\')">حفظ</button></div></div>';
+ $('#drb').classList.add('on');$('#dr').classList.add('on');}
+function closeDrawer(){$('#drb').classList.remove('on');$('#dr').classList.remove('on');}
+function saveStatus(){cur.status=$('#stSel').value;paintRow(cur);toast('تم تحديث الحالة إلى: '+cur.status);openOrder(cur);}
+$('#drb').onclick=closeDrawer;
+
+// ---- inventory actions ----
+$$('#v3 .btn').forEach(b=>{if(!b.onclick)b.addEventListener('click',()=>toast('تم إنشاء طلب إعادة التوريد (عرض تجريبي)'));});
+
+// ---- funnel / sources / cohorts ----
+const F=[['زيارات المتجر',5200],['مشاهدة منتج',2860],['إضافة للسلة',612],['بدء الدفع',298],['طلب مدفوع',142]];
+$('#funnel').innerHTML=F.map((f,i)=>'<div class="bar"><b>'+f[0]+'</b><div style="width:'+Math.max(f[1]/F[0][1]*100,11)+'%">'+fmt(f[1])+'</div><em>'+(i?(f[1]/F[i-1][1]*100).toFixed(1)+'% من السابق':'')+'</em></div>').join('');
+[['إنستغرام',2100,58],['تيك توك',1500,41],['جوجل',900,27],['مباشر',500,16],['سناب',200,0]].forEach(r=>{$('#srcT').insertAdjacentHTML('beforeend','<tr><td>'+r[0]+'</td><td>'+fmt(r[1])+'</td><td>'+r[2]+'</td><td>'+(r[2]/r[1]*100).toFixed(1)+'%</td></tr>');});
+const CO=[['أكتوبر',100,18,11,8],['نوفمبر',100,16,9,null],['ديسمبر',100,null,null,null]];
+$('#cohT').innerHTML='<tr><th>الدفعة</th><th>الشراء الأول</th><th>بعد شهر</th><th>بعد شهرين</th><th>بعد 3 أشهر</th></tr>'
+ +CO.map(r=>'<tr><td>'+r[0]+'</td>'+r.slice(1).map(v=>v==null?'<td>—</td>':'<td style="background:rgba(100,84,240,'+(0.08+v/130)+');color:'+(v>40?'#fff':'#181B29')+'">'+v+'%</td>').join('')+'</tr>').join('');
+
+// ---- profit calculator ----
+function calc(){const g=i=>parseFloat($('#'+i).value)||0;const p=g('c_price'),c=g('c_cost'),sh=g('c_ship'),fee=g('c_fee')/100,cpa=g('c_cpa'),ret=g('c_ret')/100;
+ const rev=p+sh;const fees=rev*fee;const retLoss=ret*(c*0.3+sh);const net=rev-c-sh-fees-cpa-retLoss;const be=rev/Math.max(rev-c-sh-fees-retLoss,1);const mx=rev-c-sh-fees-retLoss;
+ $('#r_net').textContent=fmt(net)+' ر.س';$('#r_net').style.color=net>=0?'#7ef0b0':'#ff9a9a';$('#r_rev').textContent=fmt(rev)+' ر.س';$('#r_mar').textContent=(net/rev*100).toFixed(1)+'%';
+ $('#r_be').textContent=be.toFixed(2)+'x';$('#r_max').textContent=fmt(mx)+' ر.س';$('#r_100').textContent=fmt(net*100)+' ر.س';
+ $('#r_msg').textContent=net>=0?'ربحك إيجابي. تقدر تزوّد الميزانية الإعلانية طالما CPA أقل من '+fmt(mx)+' ر.س.':'تخسر على كل طلب. خفّض CPA أو ارفع السعر قبل ما تزوّد الإنفاق.';}
+$$('.calc input').forEach(i=>i.addEventListener('input',calc));calc();
+
+// ---- customers ----
+const CU=[['نورة ع.','الرياض',3,1180],['فهد س.','جدة',1,113],['ريم م.','الدمام',2,331],['سلطان ق.','الرياض',4,1522],['هند أ.','مكة',1,198],['ماجد ب.','الخبر',1,0],['أمل ر.','أبها',2,412],['خالد ن.','تبوك',1,0]].map(r=>({n:r[0],c:r[1],o:r[2],l:r[3],seg:r[2]>=4?'VIP':r[2]>=2?'متكرر':'جديد'}));
+function paintCust(){const q=$('#custQ').value.trim(),s=$('#custS').value;const L=CU.filter(x=>(!q||(x.n+x.c).includes(q))&&(s==='all'||x.seg===s));
+ $('#custT').innerHTML='<tr><th>العميل</th><th>المدينة</th><th>الطلبات</th><th>القيمة الإجمالية</th><th>الشريحة</th></tr>'+L.map(x=>'<tr><td>'+x.n+'</td><td>'+x.c+'</td><td>'+x.o+'</td><td>'+fmt(x.l)+' ر.س</td><td><span class="tag '+(x.seg==='VIP'?'t-ok':x.seg==='متكرر'?'t-info':'t-wait')+'">'+x.seg+'</span></td></tr>').join('');}
+const tl=CU.reduce((a,x)=>a+x.l,0);
+$('#custK').innerHTML=[['العملاء',CU.length],['معدل التكرار',Math.round(CU.filter(x=>x.o>1).length/CU.length*100)+'%'],['متوسط قيمة العميل',fmt(tl/CU.length)+' ر.س'],['VIP',CU.filter(x=>x.seg==='VIP').length]].map(k=>'<div class="kpi"><div class="lbl">'+k[0]+'</div><div class="val">'+k[1]+'</div></div>').join('');
+$('#custQ').oninput=paintCust;$('#custS').onchange=paintCust;paintCust();
+
+// ---- reports ----
+let lastCsv=[];
+function runReport(){const t=$('#repT').value,n=+$('#repR').value;const s=series(n);let head,rows;
+ if(t==='sales'){head=['اليوم','المبيعات','الطلبات'];rows=s.map((v,i)=>['يوم '+(i+1),v,Math.max(1,Math.round(v/160))]);}
+ else if(t==='products'){head=['المنتج','المبيعات','الوحدات'];rows=[['باقة العناية بالسيارة 3 في 1',s.reduce((a,b)=>a+b,0)*0.55|0,0],['ممسحة البخاخ 2 في 1',s.reduce((a,b)=>a+b,0)*0.25|0,0],['منظم أدراج',s.reduce((a,b)=>a+b,0)*0.2|0,0]];rows.forEach((r,i)=>r[2]=Math.round(r[1]/[439,113,103][i]));}
+ else if(t==='ads'){head=['اليوم','الإنفاق','المبيعات','ROAS'];rows=s.map((v,i)=>{const a=Math.round(v*0.27);return ['يوم '+(i+1),a,v,(v/a).toFixed(2)];});}
+ else{head=['اليوم','المبيعات','الربح الصافي'];rows=s.map((v,i)=>['يوم '+(i+1),v,Math.round(v*0.22)]);}
+ lastCsv=[head,...rows];
+ $('#repOut').innerHTML='<table><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</table><div class="note" style="margin-top:10px">أرقام تجريبية موسومة. تتحول لأرقام المتجر الحقيقية عند اكتمال الربط.</div>';}
+function csv(kind){let rows;
+ if(kind==='orders')rows=[['id','date','name','city','items','total','status'],...orders.map(o=>[o.id,o.date,o.name,o.city,o.items,o.total,o.status])];
+ else if(kind==='customers')rows=[['name','city','orders','ltv','segment'],...CU.map(x=>[x.n,x.c,x.o,x.l,x.seg])];
+ else rows=lastCsv.length?lastCsv:[['empty']];
+ const body='\ufeff'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([body],{type:'text/csv;charset=utf-8'}));a.download='zaviro-'+kind+'.csv';a.click();toast('تم تنزيل ملف CSV');}
+
+// ---- command palette ----
+const cmdItems=Object.entries(titles).map(([k,v])=>[k,v]);
+function paintCmd(q){$('#cmdL').innerHTML=cmdItems.filter(x=>!q||x[1].includes(q)).map(x=>'<a data-k="'+x[0]+'">'+x[1]+'</a>').join('');
+ $$('#cmdL a').forEach(a=>a.onclick=()=>{go(a.dataset.k);closeCmd();});}
+function openCmd(){$('#cmdB').classList.add('on');$('#cmdI').value='';paintCmd('');$('#cmdI').focus();}
+function closeCmd(){$('#cmdB').classList.remove('on');}
+$('#cmdB').onclick=e=>{if(e.target.id==='cmdB')closeCmd();};
+$('#cmdI').oninput=e=>paintCmd(e.target.value);
+$('#cmdI').onkeydown=e=>{if(e.key==='Enter'){const a=$('#cmdL a');if(a)a.click();}if(e.key==='Escape')closeCmd();};
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openCmd();}if(e.key==='Escape'){closeDrawer();closeCmd();}});
+$('#cmdBtn').onclick=openCmd;
+
+// ---- real feed (activates when FEED_URL is set) ----
+async function loadFeed(){if(!FEED_URL)return;try{const r=await fetch(FEED_URL,{cache:'no-store'});const j=await r.json();
+ const tb=$('#v2 table');[...tb.rows].slice(1).forEach(r=>r.remove());
+ (j.orders||[]).forEach(o=>{const tr=tb.insertRow();tr.innerHTML='<td class="mono">#'+o.id+'</td><td>'+o.date+'</td><td>'+o.name+'</td><td>'+o.city+'</td><td>'+o.items+'</td><td>'+o.total+' ر.س</td><td>'+(o.pay||'—')+'</td><td>'+(o.src||'مباشر')+'</td><td><span class="tag '+tagClass(o.status)+'">'+o.status+'</span></td>';});
+ readOrders();setBan(true,'بيانات حقيقية: آخر تحديث '+(j.updated||'الآن')+' · عدد الطلبات '+(j.orders||[]).length+'. الأقسام الأخرى ما زالت تجريبية حتى ربط الإعلانات.');}
+ catch(e){setBan(false,'تعذّر الوصول لخلاصة الطلبات الحقيقية الآن، نعرض البيانات التجريبية.');}}
+loadFeed();
 </script>
 </body>
 </html>

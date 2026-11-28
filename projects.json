@@ -261,18 +261,18 @@
       "status": "demo",
       "url": "https://abdalrahmanmohammed.github.io/abdalrahman-portfolio/dashboard/",
       "title": {
-        "ar": "لوحة تاجر زافيرو (نموذج أولي)",
-        "en": "Zaviro merchant dashboard (demo)"
+        "ar": "لوحة تاجر زافيرو v3",
+        "en": "Zaviro merchant dashboard v3"
       },
       "desc": {
-        "ar": "نموذج أولي للوحة تحكم التاجر: مؤشرات مبيعات وطلبات ومخزون في مكان واحد، شاشة ربط منصات الإعلانات (Meta وتيك توك وجوجل وسناب) عبر الواجهات الرسمية، ومعالج خطوة بخطوة لربط البكسل بدون كود.",
-        "en": "Merchant-dashboard prototype: sales, orders and inventory indicators in one place, ad-platform connection screen (Meta, TikTok, Google, Snap) via official APIs, and a no-code guided pixel-linking wizard."
+        "ar": "لوحة تاجر عربية RTL: درج تفاصيل الطلب وحالاته، فلاتر وتصدير CSV، نطاقات تاريخ تعمل فعليًا، قمع التحويل وCohorts، حاسبة ربح وROAS التعادل، عملاء وتقارير، ومعالج بكسل. مبنية بأنماط مفتوحة المصدر (Tabler, shadcn/ui, Tremor, refine) مع شاشة اعتمادات.",
+        "en": "Arabic RTL merchant dashboard: order drawer with status flow, filters and CSV export, working date ranges, conversion funnel and cohorts, profit calculator with break-even ROAS, customers, reports and pixel wizard. Built with open-source patterns (Tabler, shadcn/ui, Tremor, refine) with a credits screen."
       },
       "tags": [
         "Dashboard",
-        "Demo",
         "Analytics",
-        "Arabic"
+        "Arabic",
+        "Open source patterns"
       ]
     }
   ]
