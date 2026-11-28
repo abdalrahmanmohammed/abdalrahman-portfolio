@@ -136,9 +136,29 @@ tr:hover td{background:var(--soft)}
 .switch::after{content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
 .switch.on{background:var(--ok)}.switch.on::after{right:19px}
 .kbd{font-size:10.5px;border:1px solid #34386a;border-radius:5px;padding:1px 6px;color:#9aa0c3;margin-right:auto}
+
+/* v3.1 mobile nav */
+.menu-btn{display:none;position:fixed;top:12px;right:12px;z-index:64;width:46px;height:46px;border-radius:12px;border:none;background:var(--brand);color:#fff;font-size:22px;box-shadow:0 6px 20px rgba(100,84,240,.45);cursor:pointer}
+.side-back{position:fixed;inset:0;background:rgba(20,22,40,.5);z-index:62;display:none}
+.side-back.on{display:block}
+@media(max-width:1100px){
+ .side{display:block!important;position:fixed;right:0;top:0;height:100vh;width:272px;max-width:84vw;transform:translateX(106%);transition:transform .25s ease;z-index:63;box-shadow:-10px 0 40px rgba(0,0,0,.35)}
+ .side.open{transform:none}
+ .side{padding-top:70px}
+ html,body{overflow-x:hidden}
+ .card,.kpi{min-width:0}
+ .grid2,.grid3{grid-template-columns:minmax(0,1fr)!important}
+ .menu-btn{display:flex;align-items:center;justify-content:center}
+ main{padding:16px 14px;padding-top:68px}
+ .topbar{margin-right:0}
+ .kpis{grid-template-columns:repeat(2,1fr)}
+ table{display:block;overflow-x:auto;white-space:nowrap}
+ .calc{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+<button class="menu-btn" id="menuBtn" aria-label="القائمة">☰</button><div class="side-back" id="sideBack"></div>
 <div class="layout">
 <aside class="side">
   <div class="logo"><div class="z">Z</div><div><b>ZAVIRO</b><small>لوحة التاجر الذكية</small></div></div>
@@ -618,6 +638,12 @@ async function loadFeed(){if(!FEED_URL)return;try{const r=await fetch(FEED_URL,{
  readOrders();setBan(true,'بيانات حقيقية: آخر تحديث '+(j.updated||'الآن')+' · عدد الطلبات '+(j.orders||[]).length+'. الأقسام الأخرى ما زالت تجريبية حتى ربط الإعلانات.');}
  catch(e){setBan(false,'تعذّر الوصول لخلاصة الطلبات الحقيقية الآن، نعرض البيانات التجريبية.');}}
 loadFeed();
+
+(function(){const s=document.querySelector('.side'),b=document.getElementById('sideBack'),m=document.getElementById('menuBtn');
+ function t(o){s.classList.toggle('open',o);b.classList.toggle('on',o);m.textContent=o?'✕':'☰';}
+ m.onclick=()=>t(!s.classList.contains('open'));b.onclick=()=>t(false);
+ document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>t(false)));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')t(false);});})();
 </script>
 </body>
 </html>
