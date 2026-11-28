@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>زافيرو | لوحة التاجر الذكية — مركز قيادة متجرك</title>
+<meta name="description" content="لوحة تحكم عربية متكاملة للتاجر الإلكتروني: مبيعاتك وطلباتك ومخزونك وإعلاناتك في شاشة واحدة. ربط بدون كود مع ميتا وتيك توك وجوجل وسناب.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e102c; --navy2:#181a3e; --card:#1c1e46; --line:rgba(255,255,255,.08);
+  --violet:#5b53f5; --violet2:#7a73ff; --gold:#f5c542; --white:#f5f6ff; --muted:#a8adc9;
+  --green:#3ddc97; --red:#ff6b6b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.eyebrow{display:inline-block;color:var(--gold);font-weight:700;font-size:.95rem;letter-spacing:.5px;background:rgba(245,197,66,.08);border:1px solid rgba(245,197,66,.25);padding:6px 16px;border-radius:100px;margin-bottom:18px}
+h2.sec{font-size:2.3rem;font-weight:900;margin-bottom:14px}
+p.sub{color:var(--muted);max-width:640px;margin:0 auto 48px}
+.center{text-align:center}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* NAV */
+nav{position:fixed;inset-inline:0;top:0;z-index:50;background:rgba(14,16,44,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.2rem}
+.logo{width:38px;height:38px;border-radius:11px;background:var(--violet);display:grid;place-items:center;font-weight:900;font-size:1.15rem;position:relative}
+.logo::after{content:'';position:absolute;top:7px;left:8px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+nav .links{display:flex;gap:26px;color:var(--muted);font-weight:600;font-size:.95rem}
+nav .links a:hover{color:var(--white)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;border-radius:14px;padding:13px 26px;transition:.25s;border:1px solid transparent;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn-gold{background:var(--gold);color:#231a02}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(245,197,66,.28)}
+.btn-ghost{border-color:var(--line);color:var(--white);background:rgba(255,255,255,.04)}
+.btn-ghost:hover{border-color:var(--violet2);background:rgba(91,83,245,.12)}
+.btn-sm{padding:9px 20px;font-size:.92rem}
+
+/* HERO */
+.hero{padding:170px 0 90px;position:relative;background:
+  radial-gradient(700px 420px at 85% 8%,rgba(91,83,245,.22),transparent 60%),
+  radial-gradient(560px 380px at 12% 88%,rgba(245,197,66,.10),transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:3.1rem;font-weight:900;line-height:1.35;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{color:var(--muted);font-size:1.15rem;margin-bottom:32px;max-width:520px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+.hero .stats{display:flex;gap:36px;flex-wrap:wrap}
+.stat b{display:block;font-size:1.7rem;font-weight:900;color:var(--gold)}
+.stat span{color:var(--muted);font-size:.92rem}
+.shot-frame{border-radius:18px;border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:perspective(1200px) rotateY(6deg) rotateX(2deg);transition:.5s}
+.shot-frame:hover{transform:none}
+.shot-frame img{width:100%;display:block}
+
+/* MARQUEE */
+.marquee{border-block:1px solid var(--line);padding:16px 0;overflow:hidden;background:var(--navy2)}
+.marquee .row{display:flex;gap:48px;white-space:nowrap;animation:mq 26s linear infinite;color:var(--muted);font-weight:700}
+.marquee .row b{color:var(--gold)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(50%)}}
+
+/* FEATURES */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.3s}
+.feat:hover{transform:translateY(-6px);border-color:rgba(91,83,245,.5);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.feat .ic{width:52px;height:52px;border-radius:14px;background:rgba(91,83,245,.16);display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px}
+.feat h3{font-size:1.18rem;font-weight:800;margin-bottom:8px}
+.feat p{color:var(--muted);font-size:.95rem}
+
+/* GALLERY */
+.gallery{background:var(--navy2)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+.tab{padding:10px 22px;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--muted);font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;transition:.25s}
+.tab.on{background:var(--violet);color:#fff;border-color:var(--violet)}
+.gview{border-radius:20px;border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+.gview img{width:100%;display:block}
+.gcap{text-align:center;color:var(--muted);margin-top:16px;font-size:.95rem}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-20px;inset-inline-start:26px;width:42px;height:42px;border-radius:13px;background:var(--gold);color:#231a02;font-weight:900;display:grid;place-items:center;font-size:1.15rem}
+.step h3{margin:14px 0 8px;font-size:1.15rem;font-weight:800}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* CHANGELOG */
+.log{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:10px 30px}
+.log .row{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
+.log .row:last-child{border-bottom:0}
+.pill{flex:0 0 auto;font-size:.75rem;font-weight:800;padding:4px 12px;border-radius:100px}
+.pill.new{background:rgba(61,220,151,.14);color:var(--green)}
+.pill.soon{background:rgba(245,197,66,.14);color:var(--gold)}
+.log b{display:block;font-weight:800}
+.log span{color:var(--muted);font-size:.92rem}
+
+/* CREDITS */
+.credits{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.credits span{border:1px solid var(--line);border-radius:100px;padding:8px 18px;color:var(--muted);font-size:.9rem;background:rgba(255,255,255,.03)}
+.credits b{color:var(--white)}
+
+/* CTA */
+.bigcta{text-align:center;background:
+  radial-gradient(600px 300px at 50% 0%,rgba(91,83,245,.25),transparent 65%)}
+.bigcta h2{font-size:2.6rem;font-weight:900;margin-bottom:16px}
+.bigcta p{color:var(--muted);margin-bottom:32px}
+.urlpill{display:inline-block;margin-top:26px;background:var(--navy2);border:1px solid var(--line);border-radius:100px;padding:12px 28px;color:var(--gold);font-weight:700;direction:ltr;font-size:.95rem}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .grid,.steps{grid-template-columns:1fr}
+  nav .links{display:none}
+  h2.sec{font-size:1.7rem}
+  .shot-frame{transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">Z</span> ZAVIRO <span style="color:var(--muted);font-weight:600;font-size:.85rem">| لوحة التاجر الذكية</span></div>
+    <div class="links">
+      <a href="#features">المميزات</a>
+      <a href="#screens">الشاشات</a>
+      <a href="#how">كيف تبدأ</a>
+      <a href="#updates">آخر التحديثات</a>
+    </div>
+    <a class="btn btn-gold btn-sm" href="../dashboard/">جرّب الديمو المباشر</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">صُممت للتاجر العربي — عربية بالكامل RTL</span>
+      <h1>كل تجارتك…<br>في <em>شاشة واحدة</em></h1>
+      <p class="lead">مبيعاتك، طلباتك، مخزونك، وصرفك الإعلاني مقابل ربحك الصافي — لحظة بلحظة. بدون عشرة تابات مفتوحة، وبدون سطر كود واحد.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="../dashboard/">افتح الديمو المباشر ←</a>
+        <a class="btn btn-ghost" href="#screens">شاهد الشاشات</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>7</b><span>شاشات تفاعلية</span></div>
+        <div class="stat"><b>4</b><span>منصات إعلانية</span></div>
+        <div class="stat"><b>0</b><span>أسطر كود للربط</span></div>
+        <div class="stat"><b>100%</b><span>عربي RTL</span></div>
+      </div>
+    </div>
+    <div class="shot-frame"><img src="shot-overview.png" alt="النظرة العامة — لوحة تاجر زافيرو"></div>
+  </div>
+</header>
+
+<div class="marquee"><div class="row">
+  <span>مبيعات لحظية <b>•</b></span><span>ROAS لكل منصة <b>•</b></span><span>تنبيهات مخزون <b>•</b></span><span>معالج بكسل بدون كود <b>•</b></span><span>ربح صافي بعد التكاليف <b>•</b></span><span>طلبات بفلاتر وبحث <b>•</b></span>
+  <span>مبيعات لحظية <b>•</b></span><span>ROAS لكل منصة <b>•</b></span><span>تنبيهات مخزون <b>•</b></span><span>معالج بكسل بدون كود <b>•</b></span><span>ربح صافي بعد التكاليف <b>•</b></span><span>طلبات بفلاتر وبحث <b>•</b></span>
+</div></div>
+
+<section id="features">
+  <div class="wrap center">
+    <span class="eyebrow">المميزات</span>
+    <h2 class="sec">كل أداة يحتاجها تاجر… مبنية بعناية</h2>
+    <p class="sub">من أول نظرة على مبيعات اليوم، إلى آخر بكسل على متجرك — كل شيء في مكان واحد.</p>
+    <div class="grid" style="text-align:right">
+      <div class="feat reveal"><div class="ic">📊</div><h3>نظرة عامة لحظية</h3><p>المبيعات، الطلبات، متوسط قيمة الطلب، الإنفاق الإعلاني، ROAS الإجمالي، وصافي الربح بعد التكاليف — مع مقارنة بالفترة السابقة ونطاقات تاريخ مرنة.</p></div>
+      <div class="feat reveal"><div class="ic">🧾</div><h3>إدارة الطلبات</h3><p>كل طلب بحالته: مدفوع، بانتظار الدفع، قيد التجهيز، تم الشحن، تم التوصيل، ملغي. فلاتر فورية وبحث برقم الطلب أو اسم العميل، مع المصدر وطريقة الدفع وتصدير CSV.</p></div>
+      <div class="feat reveal"><div class="ic">📦</div><h3>المخزون الذكي</h3><p>حساب تلقائي لأيام النفاد لكل منتج، تنبيه قبل نفاد المخزون، حد إعادة الطلب، قيمة المخزون بالتكلفة، ومزامنة المورّد.</p></div>
+      <div class="feat reveal"><div class="ic">📣</div><h3>الأداء الإعلاني والربحية</h3><p>الصرف مقابل المبيعات لكل منصة — ميتا، تيك توك، جوجل، سناب — مع ROAS وصافي الربح بعد تكلفة المنتج والشحن. اعرف أنهي منصة تكسبك وأنهي تأكل فلوسك.</p></div>
+      <div class="feat reveal"><div class="ic">🔗</div><h3>ربط المنصات بدون كود</h3><p>ربط رسمي عبر OAuth بضغطة واحدة لحساباتك الإعلانية، مع Easy Orders وTaager لمزامنة الطلبات والمخزون والتكاليف تلقائيًا.</p></div>
+      <div class="feat reveal"><div class="ic">🎯</div><h3>معالج البكسل</h3><p>يركّب بكسلات ميتا وتيك توك وجوجل وسناب خطوة بخطوة، ويتأكد أن كل بكسل شغال وسليم بأحداث كاملة — PageView حتى Purchase عبر Conversion API.</p></div>
+      <div class="feat reveal"><div class="ic">🔔</div><h3>مركز التنبيهات</h3><p>قواعد مخصصة لكل تاجر: مخزون تحت الحد، هبوط ROAS، طلبات بانتظار الدفع — تنبيهات واتساب وبريد قبل أن تكبر المشكلة.</p></div>
+      <div class="feat reveal"><div class="ic">📈</div><h3>تقارير وتصدير</h3><p>ملخصات يومية وأسبوعية وشهرية، وتصدير CSV لأي جدول — أرقامك ملكك، تاخدها وين ما تبي.</p></div>
+      <div class="feat reveal"><div class="ic">🛡️</div><h3>خصوصية وأمان</h3><p>مفاتيح الربط تُخزن مشفّرة على خادم آمن، ولا تظهر أبدًا في الصفحة العامة. بيانات متجرك لك وحدك.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="screens" class="gallery">
+  <div class="wrap center">
+    <span class="eyebrow">الشاشات</span>
+    <h2 class="sec">شوفها بعينك</h2>
+    <p class="sub">سبع شاشات حقيقية من الديمو المباشر — تنقّل بينها.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="gview reveal"><img id="gimg" src="shot-overview.png" alt="شاشة من لوحة تاجر زافيرو"></div>
+    <p class="gcap" id="gcap"></p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap center">
+    <span class="eyebrow">كيف تبدأ</span>
+    <h2 class="sec">ثلاث خطوات… وتشتغل</h2>
+    <p class="sub">من التسجيل إلى أول لوحة بيانات حقيقية في دقائق، بدون مبرمج.</p>
+    <div class="steps" style="text-align:right">
+      <div class="step reveal"><h3>اربط متجرك</h3><p>اربط متجرك على Easy Orders بمفتاح API واحد — تنزل طلباتك ومنتجاتك ومخزونك تلقائيًا وتتحدث لحظيًا عبر Webhooks.</p></div>
+      <div class="step reveal"><h3>اربط منصاتك الإعلانية</h3><p>ميتا وتيك توك وجوجل وسناب عبر OAuth بضغطة واحدة، ومعالج البكسل يتأكد أن التتبع سليم 100%.</p></div>
+      <div class="step reveal"><h3>تابع كل شيء من شاشة واحدة</h3><p>مبيعات وصرف وربح صافي لكل منصة، تنبيهات قبل المشاكل، وتقارير جاهزة — قراراتك صارت أسرع وأدق.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="updates" class="gallery" style="background:var(--navy)">
+  <div class="wrap center">
+    <span class="eyebrow">آخر التحديثات</span>
+    <h2 class="sec">اللوحة تتطور كل يوم</h2>
+    <p class="sub">سجل التغييرات — آخر ما أُضيف للمستودع.</p>
+    <div class="log" style="text-align:right">
+      <div class="row"><span class="pill new">جديد</span><div><b>الإصدار 2.0 — سبع شاشات تفاعلية كاملة</b><span>فلاتر الطلبات والبحث، تنبيهات المخزون وأيام النفاد، الربح بعد التكاليف لكل منصة، مركز تنبيهات بقواعد مخصصة، ومحدد نطاقات التاريخ.</span></div></div>
+      <div class="row"><span class="pill new">جديد</span><div><b>معالج البكسل بدون كود + بكسلات المتجر الحقيقية</b><span>3 بكسلات ميتا وبكسل تيك توك مثبتة وتُفحص تلقائيًا، مع أحداث Conversion API كاملة.</span></div></div>
+      <div class="row"><span class="pill new">جديد</span><div><b>تثبيت Google Analytics 4 على المتجر</b><span>قياس G-Q4DDKPM751 مثبت ومُتحقق منه على المتجر المباشر — الزيارات والتحويلات تُقاس فعليًا.</span></div></div>
+      <div class="row"><span class="pill soon">قريبًا</span><div><b>البيانات الحقيقية المباشرة</b><span>ربط طلبات المتجر الفعلية عبر Easy Orders API وWebhooks بدل البيانات التجريبية — العمل جارٍ الآن.</span></div></div>
+      <div class="row"><span class="pill soon">قريبًا</span><div><b>ربط Meta الإعلاني الكامل</b><span>سحب الصرف والأداء تلقائيًا من حساباتك الإعلانية، ومزامنة تكاليف المنتجات من Taager.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap center">
+    <span class="eyebrow">مفتوح المصدر</span>
+    <h2 class="sec" style="font-size:1.7rem">مبني على أكتاف عمالقة</h2>
+    <p class="sub">أنماط ومكوّنات من أفضل مشاريع جت هب المفتوحة بتراخيص مسموحة، مع النسب الكامل لأصحابها.</p>
+    <div class="credits">
+      <span><b>Tabler</b> — MIT</span>
+      <span><b>shadcn/ui</b> — MIT</span>
+      <span><b>Tremor</b> — Apache-2.0</span>
+      <span><b>refine</b> — MIT</span>
+      <span><b>react-admin</b> — MIT</span>
+      <span><b>Chart.js</b> — MIT</span>
+      <span><b>Saleor / Spree</b> — BSD-3</span>
+    </div>
+  </div>
+</section>
+
+<section class="bigcta">
+  <div class="wrap">
+    <h2>هذه ليست صفحة ديمو…<br>هذا مركز قيادة التاجر</h2>
+    <p>جرّب النسخة التفاعلية الآن — كل الشاشات شغالة أمامك.</p>
+    <a class="btn btn-gold" href="../dashboard/" style="font-size:1.1rem;padding:16px 38px">افتح لوحة التاجر ←</a>
+    <br>
+    <span class="urlpill">abdalrahmanmohammed.github.io/abdalrahman-portfolio/dashboard/</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>ZAVIRO — لوحة التاجر الذكية · صُنعت بإتقان للتاجر العربي</span>
+    <span>زافيرو — التجارة بعقل © 2026</span>
+  </div>
+</footer>
+
+<script>
+const screens = [
+  {f:'shot-overview.png', t:'نظرة عامة', c:'المبيعات مقابل الإنفاق الإعلاني، ROAS، وصافي الربح — مع أحدث التنبيهات.'},
+  {f:'shot-orders.png', t:'الطلبات', c:'كل طلب بحالته ومصدره وطريقة دفعه — فلاتر فورية وبحث وتصدير CSV.'},
+  {f:'shot-inventory.png', t:'المخزون', c:'أيام النفاد لكل منتج، تنبيهات إعادة الطلب، وقيمة المخزون بالتكلفة.'},
+  {f:'shot-ads.png', t:'الأداء الإعلاني', c:'الصرف مقابل المبيعات والربح الصافي لكل منصة إعلانية.'},
+  {f:'shot-connect.png', t:'ربط المنصات', c:'ميتا وتيك توك وجوجل وسناب عبر OAuth — وEasy Orders وTaager متصلان.'},
+  {f:'shot-pixel.png', t:'معالج البكسل', c:'تركيب وفحص كل بكسل خطوة بخطوة — بدون كود.'},
+  {f:'shot-alerts.png', t:'التنبيهات', c:'مركز تنبيهات بقواعد مخصصة يوصلك واتساب وبريد قبل أن تكبر المشكلة.'}
+];
+const tabs = document.getElementById('tabs');
+const gimg = document.getElementById('gimg');
+const gcap = document.getElementById('gcap');
+screens.forEach((s,i)=>{
+  const b = document.createElement('button');
+  b.className = 'tab' + (i===0?' on':'');
+  b.textContent = s.t;
+  b.onclick = ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+    b.classList.add('on');
+    gimg.style.opacity = 0;
+    setTimeout(()=>{ gimg.src = s.f; gcap.textContent = s.c; gimg.onload = ()=> gimg.style.opacity = 1; }, 180);
+  };
+  tabs.appendChild(b);
+});
+gimg.style.transition = 'opacity .25s';
+gcap.textContent = screens[0].c;
+
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
